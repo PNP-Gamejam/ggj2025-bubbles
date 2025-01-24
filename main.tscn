@@ -1,14 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://dope7ywd57rhn"]
+[gd_scene load_steps=7 format=3 uid="uid://dope7ywd57rhn"]
 
 [ext_resource type="PackedScene" uid="uid://cw557oc4ju5no" path="res://monster.tscn" id="1_vvtl6"]
 [ext_resource type="PackedScene" uid="uid://tbcd247fin7t" path="res://base.tscn" id="2_g7t2p"]
 [ext_resource type="Script" path="res://damage_clicker.gd" id="3_1wouj"]
 [ext_resource type="PackedScene" uid="uid://bohl7r3rctjnj" path="res://damage_stacker.tscn" id="4_n3h7q"]
+[ext_resource type="PackedScene" uid="uid://bmbew5t3hprmb" path="res://sentry.tscn" id="5_sykte"]
+[ext_resource type="Texture2D" uid="uid://8x2yqsh3qtf7" path="res://assets/Bg. jpg.jpg" id="6_x3iyv"]
 
 [node name="Main" type="Node2D"]
 
 [node name="Monster" parent="." instance=ExtResource("1_vvtl6")]
-SPEED = 300.0
 
 [node name="Monster2" parent="." instance=ExtResource("1_vvtl6")]
 position = Vector2(404, 542)
@@ -24,3 +25,14 @@ position = Vector2(611, 306)
 [node name="DamageClicker" type="Node" parent="." groups=["damage_clicker"]]
 script = ExtResource("3_1wouj")
 DAMAGE_STACKER = ExtResource("4_n3h7q")
+
+[node name="Sentry" parent="." instance=ExtResource("5_sykte")]
+position = Vector2(150, 180)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("6_x3iyv")

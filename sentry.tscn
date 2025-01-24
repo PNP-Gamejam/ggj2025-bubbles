@@ -1,0 +1,88 @@
+[gd_scene load_steps=16 format=3 uid="uid://bmbew5t3hprmb"]
+
+[ext_resource type="Texture2D" uid="uid://dy21ngd1utx30" path="res://assets/Sentries-AT1.png" id="1_q4qon"]
+[ext_resource type="Script" path="res://sentry.gd" id="1_xb7h0"]
+[ext_resource type="Script" path="res://attackable.gd" id="2_306xv"]
+[ext_resource type="PackedScene" uid="uid://4u16gdplxy4l" path="res://attacker.tscn" id="3_5gn1u"]
+[ext_resource type="Texture2D" uid="uid://cgfd8iquynijn" path="res://assets/Sentries-AT2.png" id="3_mdu5p"]
+[ext_resource type="Texture2D" uid="uid://wdfjbgn7lodm" path="res://assets/Sentries-AT3.png" id="4_t5tvt"]
+[ext_resource type="Texture2D" uid="uid://dc67m7fl7tl4e" path="res://assets/Sentries-AT4.png" id="5_iq5yb"]
+[ext_resource type="Texture2D" uid="uid://b2nkva5dhmgjd" path="res://assets/Sentries-AT5.png" id="6_tbf07"]
+[ext_resource type="Texture2D" uid="uid://cq81cgcuygyyk" path="res://assets/Sentries-AT6.png" id="7_1ppsk"]
+[ext_resource type="Texture2D" uid="uid://ca2qgctno3mxb" path="res://assets/Sentries-AT7.png" id="8_j7nfu"]
+[ext_resource type="Texture2D" uid="uid://cneuwj12nyhof" path="res://assets/Sentries-AT8.png" id="9_4hjmg"]
+[ext_resource type="Texture2D" uid="uid://bkfe6fbv8llnk" path="res://assets/Sentries-AT9.png" id="10_vgjsm"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4jtvp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_q4qon")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_mdu5p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_t5tvt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_iq5yb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_tbf07")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_1ppsk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_j7nfu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_4hjmg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_vgjsm")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_q4qon")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gisq2"]
+radius = 45.3982
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_iut1b"]
+radius = 309.672
+
+[node name="Sentry" type="Node2D"]
+script = ExtResource("1_xb7h0")
+attack_damage = 5
+attack_cooldown = 3.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_4jtvp")
+animation = &"attack"
+autoplay = "default"
+
+[node name="Attackable" type="Area2D" parent="."]
+script = ExtResource("2_306xv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Attackable"]
+position = Vector2(-38, 0)
+shape = SubResource("CircleShape2D_gisq2")
+
+[node name="Attacker" parent="." instance=ExtResource("3_5gn1u")]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Attacker"]
+shape = SubResource("CircleShape2D_iut1b")

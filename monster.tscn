@@ -1,13 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://cw557oc4ju5no"]
+[gd_scene load_steps=13 format=3 uid="uid://cw557oc4ju5no"]
 
 [ext_resource type="Script" path="res://monster.gd" id="1_t7yji"]
 [ext_resource type="Shader" path="res://resources/circle.gdshader" id="2_jq2m4"]
 [ext_resource type="PackedScene" uid="uid://4s5l8issnoat" path="res://attackable.tscn" id="3_evpw1"]
+[ext_resource type="PackedScene" uid="uid://4u16gdplxy4l" path="res://attacker.tscn" id="4_4fcf1"]
 [ext_resource type="PackedScene" uid="uid://jw5bme151i83" path="res://hp_bar.tscn" id="4_xktl5"]
 [ext_resource type="Shader" path="res://resources/hp_bar.gdshader" id="5_3uyto"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_0jlse"]
-radius = 34.7131
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pblsl"]
 shader = ExtResource("2_jq2m4")
@@ -21,27 +19,24 @@ gradient = SubResource("Gradient_g5ogi")
 [sub_resource type="CircleShape2D" id="CircleShape2D_3sl2o"]
 radius = 38.8973
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_aylq3"]
+radius = 34.7131
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vd1go"]
 resource_local_to_scene = true
 shader = ExtResource("5_3uyto")
 shader_parameter/hp = 10.0
 shader_parameter/max_hp = 10.0
 
-[node name="Monster" type="Area2D"]
+[node name="Monster" type="Node2D"]
 script = ExtResource("1_t7yji")
-SPEED = 200.0
+SPEED = 10.0
 metadata/_edit_vertical_guides_ = [1155.0]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_0jlse")
-debug_color = Color(0.824906, 0.225492, 0.809595, 0.42)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_pblsl")
 position = Vector2(0, -1)
 texture = SubResource("GradientTexture2D_sbjua")
-
-[node name="AttackTimer" type="Timer" parent="."]
 
 [node name="Attackable" parent="." instance=ExtResource("3_evpw1")]
 collision_layer = 2
@@ -49,6 +44,12 @@ collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Attackable"]
 shape = SubResource("CircleShape2D_3sl2o")
+
+[node name="Attacker" parent="." instance=ExtResource("4_4fcf1")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Attacker"]
+shape = SubResource("CircleShape2D_aylq3")
+debug_color = Color(0.824906, 0.225492, 0.809595, 0.42)
 
 [node name="HpBar" parent="." node_paths=PackedStringArray("_attackable") instance=ExtResource("4_xktl5")]
 material = SubResource("ShaderMaterial_vd1go")
