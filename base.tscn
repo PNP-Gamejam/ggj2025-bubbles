@@ -1,24 +1,44 @@
-[gd_scene load_steps=11 format=3 uid="uid://tbcd247fin7t"]
+[gd_scene load_steps=14 format=3 uid="uid://tbcd247fin7t"]
 
 [ext_resource type="Script" path="res://base.gd" id="1_5f5so"]
-[ext_resource type="Shader" path="res://resources/circle.gdshader" id="1_8ohdo"]
+[ext_resource type="Texture2D" uid="uid://d4nfc4x1j5jbf" path="res://assets/Main bubble hp 0.png" id="2_vokf3"]
 [ext_resource type="PackedScene" uid="uid://4s5l8issnoat" path="res://attackable.tscn" id="3_aiyoj"]
+[ext_resource type="Texture2D" uid="uid://dcocuk5ghy6q7" path="res://assets/Main bubble hp 20.png" id="3_owex3"]
+[ext_resource type="Texture2D" uid="uid://dl07volibtx7y" path="res://assets/Main bubble hp 40.png" id="4_66e0k"]
 [ext_resource type="PackedScene" uid="uid://jw5bme151i83" path="res://hp_bar.tscn" id="4_vt07g"]
 [ext_resource type="Shader" path="res://resources/hp_bar.gdshader" id="5_goeno"]
+[ext_resource type="Texture2D" uid="uid://2lk25f0hpg0w" path="res://assets/Main bubble hp 60.png" id="5_nexw6"]
+[ext_resource type="Texture2D" uid="uid://dl61yvnr55xph" path="res://assets/Main bubble hp 80.png" id="6_tl337"]
+[ext_resource type="Texture2D" uid="uid://lmpeofo4s34a" path="res://assets/Main bubble hp 100.png" id="7_pne2c"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_k5ll2"]
-shader = ExtResource("1_8ohdo")
-shader_parameter/color = Color(0.0348167, 0.19019, 0.243111, 1)
-
-[sub_resource type="Gradient" id="Gradient_redyj"]
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_iusrx"]
-gradient = SubResource("Gradient_redyj")
-width = 128
-height = 128
+[sub_resource type="SpriteFrames" id="SpriteFrames_dm0kp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_pne2c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_tl337")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_nexw6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_66e0k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_owex3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_vokf3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wpkfj"]
-radius = 87.0517
+radius = 104.019
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_l8pkm"]
 resource_local_to_scene = true
@@ -29,9 +49,10 @@ shader_parameter/max_hp = 10.0
 [node name="Base" type="Node2D" groups=["base"]]
 script = ExtResource("1_5f5so")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_k5ll2")
-texture = SubResource("GradientTexture2D_iusrx")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-5, 27)
+scale = Vector2(0.1, 0.1)
+sprite_frames = SubResource("SpriteFrames_dm0kp")
 
 [node name="Attackable" parent="." instance=ExtResource("3_aiyoj")]
 
