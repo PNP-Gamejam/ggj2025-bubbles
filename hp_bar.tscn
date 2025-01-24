@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://jw5bme151i83"]
 
 [ext_resource type="Script" path="res://hp_bar.gd" id="1_41yxs"]
-[ext_resource type="Shader" path="res://hp_bar.gdshader" id="1_tqrre"]
+[ext_resource type="Shader" path="res://resources/hp_bar.gdshader" id="1_tqrre"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_q71hp"]
 resource_local_to_scene = true
