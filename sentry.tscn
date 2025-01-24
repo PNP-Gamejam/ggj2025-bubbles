@@ -1,8 +1,9 @@
-[gd_scene load_steps=16 format=3 uid="uid://bmbew5t3hprmb"]
+[gd_scene load_steps=17 format=3 uid="uid://bmbew5t3hprmb"]
 
 [ext_resource type="Texture2D" uid="uid://dy21ngd1utx30" path="res://assets/Sentries-AT1.png" id="1_q4qon"]
 [ext_resource type="Script" path="res://sentry.gd" id="1_xb7h0"]
 [ext_resource type="Script" path="res://attackable.gd" id="2_306xv"]
+[ext_resource type="PackedScene" uid="uid://wwahsq8w5r0b" path="res://bullet.tscn" id="2_iakcu"]
 [ext_resource type="PackedScene" uid="uid://4u16gdplxy4l" path="res://attacker.tscn" id="3_5gn1u"]
 [ext_resource type="Texture2D" uid="uid://cgfd8iquynijn" path="res://assets/Sentries-AT2.png" id="3_mdu5p"]
 [ext_resource type="Texture2D" uid="uid://wdfjbgn7lodm" path="res://assets/Sentries-AT3.png" id="4_t5tvt"]
@@ -64,25 +65,31 @@ radius = 309.672
 
 [node name="Sentry" type="Node2D"]
 script = ExtResource("1_xb7h0")
+BULLET = ExtResource("2_iakcu")
 attack_damage = 5
 attack_cooldown = 3.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(35, 0)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_4jtvp")
 animation = &"attack"
 autoplay = "default"
+frame = 6
 
 [node name="Attackable" type="Area2D" parent="."]
 script = ExtResource("2_306xv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Attackable"]
-position = Vector2(-38, 0)
 shape = SubResource("CircleShape2D_gisq2")
 
 [node name="Attacker" parent="." instance=ExtResource("3_5gn1u")]
 collision_layer = 0
 collision_mask = 2
+is_custom_attack = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Attacker"]
 shape = SubResource("CircleShape2D_iut1b")
+
+[node name="BulletSpawnPosition" type="Marker2D" parent="."]
+position = Vector2(104, 0)

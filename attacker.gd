@@ -1,7 +1,9 @@
 class_name Attacker
 extends Area2D
 
-signal target_attacked
+signal attack_started(target: Attackable, damage: int)
+
+@export var is_custom_attack = false
 
 var is_attacking: bool:
 	get:
@@ -30,8 +32,9 @@ func _ready() -> void:
 	
 func _attack_current_target():
 	if !_current_target: return
-	target_attacked.emit()
-	_current_target.hp -= attack_damage
+	attack_started.emit(_current_target, attack_damage)
+	if !is_custom_attack:
+		_current_target.hp -= attack_damage
 	
 	
 func _on_area_entered(area: Area2D):
