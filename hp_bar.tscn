@@ -1,0 +1,21 @@
+[gd_scene load_steps=6 format=3 uid="uid://jw5bme151i83"]
+
+[ext_resource type="Script" path="res://hp_bar.gd" id="1_41yxs"]
+[ext_resource type="Shader" path="res://hp_bar.gdshader" id="1_tqrre"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q71hp"]
+resource_local_to_scene = true
+shader = ExtResource("1_tqrre")
+shader_parameter/hp = 10.0
+shader_parameter/max_hp = 10.0
+
+[sub_resource type="Gradient" id="Gradient_f8ova"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_8shwe"]
+gradient = SubResource("Gradient_f8ova")
+height = 8
+
+[node name="HpBar" type="Sprite2D"]
+material = SubResource("ShaderMaterial_q71hp")
+texture = SubResource("GradientTexture2D_8shwe")
+script = ExtResource("1_41yxs")
