@@ -10,13 +10,14 @@
 [node name="Main" type="Node2D"]
 
 [node name="Monster" parent="." instance=ExtResource("1_vvtl6")]
+position = Vector2(-267, -212)
 
 [node name="Monster2" parent="." instance=ExtResource("1_vvtl6")]
-position = Vector2(404, 542)
+position = Vector2(159, 815)
 SPEED = 300.0
 
 [node name="Monster3" parent="." instance=ExtResource("1_vvtl6")]
-position = Vector2(1087, 269)
+position = Vector2(1562, 65)
 SPEED = 300.0
 
 [node name="Base" parent="." instance=ExtResource("2_g7t2p")]
@@ -36,3 +37,7 @@ layer = -1
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("6_x3iyv")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(609, 288)
+zoom = Vector2(0.5, 0.5)

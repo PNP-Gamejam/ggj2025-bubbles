@@ -3,10 +3,11 @@
 [ext_resource type="Shader" path="res://resources/circle_timer.gdshader" id="1_1niid"]
 [ext_resource type="Script" path="res://damage_stacker.gd" id="1_n56ut"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_5vbgo"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nbk17"]
+resource_local_to_scene = true
 shader = ExtResource("1_1niid")
-shader_parameter/current_time = 0.415
-shader_parameter/wait_time = 1.0
+shader_parameter/current_time = 5.0
+shader_parameter/wait_time = 5.0
 
 [sub_resource type="Gradient" id="Gradient_ufi4x"]
 
@@ -16,7 +17,7 @@ width = 16
 height = 16
 
 [node name="DamageStacker" type="Sprite2D"]
-material = SubResource("ShaderMaterial_5vbgo")
+material = SubResource("ShaderMaterial_nbk17")
 rotation = 1.57079
 texture = SubResource("GradientTexture2D_sk0oe")
 script = ExtResource("1_n56ut")
@@ -28,3 +29,5 @@ offset_right = 8.99997
 offset_bottom = 34.9999
 rotation = -1.57079
 text = "x 1"
+
+[node name="Timer" type="Timer" parent="."]

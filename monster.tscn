@@ -1,20 +1,48 @@
-[gd_scene load_steps=13 format=3 uid="uid://cw557oc4ju5no"]
+[gd_scene load_steps=15 format=3 uid="uid://cw557oc4ju5no"]
 
 [ext_resource type="Script" path="res://monster.gd" id="1_t7yji"]
-[ext_resource type="Shader" path="res://resources/circle.gdshader" id="2_jq2m4"]
+[ext_resource type="Texture2D" uid="uid://b03xjssoduj5j" path="res://assets/Skinny action 1.png" id="3_7q3tt"]
 [ext_resource type="PackedScene" uid="uid://4s5l8issnoat" path="res://attackable.tscn" id="3_evpw1"]
 [ext_resource type="PackedScene" uid="uid://4u16gdplxy4l" path="res://attacker.tscn" id="4_4fcf1"]
+[ext_resource type="Texture2D" uid="uid://l3u0t62x3lyj" path="res://assets/Skinny action 2.png" id="4_d0xsd"]
 [ext_resource type="PackedScene" uid="uid://jw5bme151i83" path="res://hp_bar.tscn" id="4_xktl5"]
 [ext_resource type="Shader" path="res://resources/hp_bar.gdshader" id="5_3uyto"]
+[ext_resource type="Texture2D" uid="uid://c4bafeqxdpq70" path="res://assets/Skinny death.png" id="5_ditji"]
+[ext_resource type="Texture2D" uid="uid://fjlecymmf4un" path="res://assets/Skinny walk 1 act.png" id="6_jw6hh"]
+[ext_resource type="Texture2D" uid="uid://cqam10ltt0h8r" path="res://assets/Skinny walk 2 act.png" id="7_oos3j"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_pblsl"]
-shader = ExtResource("2_jq2m4")
-shader_parameter/color = Color(0.638889, 0, 0, 1)
-
-[sub_resource type="Gradient" id="Gradient_g5ogi"]
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_sbjua"]
-gradient = SubResource("Gradient_g5ogi")
+[sub_resource type="SpriteFrames" id="SpriteFrames_qtkff"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_7q3tt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_d0xsd")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_ditji")
+}],
+"loop": true,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_jw6hh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_oos3j")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3sl2o"]
 radius = 38.8973
@@ -33,10 +61,11 @@ script = ExtResource("1_t7yji")
 SPEED = 10.0
 metadata/_edit_vertical_guides_ = [1155.0]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_pblsl")
-position = Vector2(0, -1)
-texture = SubResource("GradientTexture2D_sbjua")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-7, 34)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_qtkff")
+animation = &"attack"
 
 [node name="Attackable" parent="." instance=ExtResource("3_evpw1")]
 collision_layer = 2
