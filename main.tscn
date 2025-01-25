@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dope7ywd57rhn"]
+[gd_scene load_steps=16 format=3 uid="uid://dope7ywd57rhn"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_ac088"]
 [ext_resource type="PackedScene" uid="uid://tbcd247fin7t" path="res://base.tscn" id="2_g7t2p"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://b8vagr0yat428" path="res://spawner.tscn" id="8_dcswj"]
 [ext_resource type="PackedScene" uid="uid://5s5hxbkgbg0n" path="res://scenes/fat.tscn" id="9_nej4j"]
 [ext_resource type="PackedScene" uid="uid://5ajshg4k8q4w" path="res://scenes/norman.tscn" id="10_xldua"]
+[ext_resource type="AudioStream" uid="uid://dtntwqr3bk8as" path="res://sound/Theme/No Se Ni Pa Donde Voy - Inaban.mp3" id="11_acn5o"]
 [ext_resource type="PackedScene" uid="uid://cqw313np7im3q" path="res://scenes/skinny.tscn" id="11_qwpp6"]
 
 [sub_resource type="Gradient" id="Gradient_n5oek"]
@@ -168,3 +169,8 @@ position = Vector2(1111, 239)
 
 [node name="Skinny" parent="." instance=ExtResource("11_qwpp6")]
 position = Vector2(58, 212)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_acn5o")
+volume_db = -10.0
+autoplay = true

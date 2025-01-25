@@ -10,6 +10,8 @@ extends Node2D
 @onready var _attacker: Attacker = $Attacker
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var _boid: Boid = $Boid
+@onready var _death_audio: AudioStreamPlayer = $DeathAudioStreamPlayer
+@onready var _hurt_audio: AudioStreamPlayer = $HurtAudioStreamPlayer
 
 
 func _ready() -> void:
@@ -17,8 +19,13 @@ func _ready() -> void:
 	_attacker.attack_damage = attack_damage
 	_attackable.max_hp = hp
 	_attackable.hp = hp
+	_attackable.hp_changed.connect(func():
+		if _attackable.hp > 0:
+			_hurt_audio.play()
+	)
 	_attackable.died.connect(func():
 		animated_sprite.play("death")
+		_death_audio.play()
 		_attacker.stop_attack()
 		GlobalBus.money_dropped.emit(bounty)
 		await get_tree().create_timer(3.0).timeout
