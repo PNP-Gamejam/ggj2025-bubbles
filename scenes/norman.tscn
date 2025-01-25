@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://5ajshg4k8q4w"]
+[gd_scene load_steps=9 format=3 uid="uid://5ajshg4k8q4w"]
 
 [ext_resource type="PackedScene" uid="uid://cw557oc4ju5no" path="res://monster.tscn" id="1_f42rp"]
 [ext_resource type="Texture2D" uid="uid://b4ylp4q6o4uw" path="res://assets/Norman action1.png" id="2_paqs5"]
@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://dwojmefsmse8v" path="res://assets/Norman stand.png" id="5_du7hf"]
 [ext_resource type="Texture2D" uid="uid://cykjrerp3g4y0" path="res://assets/Norman walk1.png" id="6_fxxye"]
 [ext_resource type="Texture2D" uid="uid://d0sx3vtrt83py" path="res://assets/Norman walk2.png" id="7_wnqr3"]
-[ext_resource type="Texture2D" uid="uid://b7syyjrxo4hll" path="res://icon.svg" id="8_ah1ep"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_fot25"]
 animations = [{
@@ -59,6 +58,3 @@ SPEED = 30.0
 position = Vector2(-14, 31)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_fot25")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("8_ah1ep")

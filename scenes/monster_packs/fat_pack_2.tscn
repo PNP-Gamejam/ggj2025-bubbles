@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://b8ci34u4f8gyi"]
+
+[ext_resource type="PackedScene" uid="uid://5s5hxbkgbg0n" path="res://scenes/fat.tscn" id="1_pobwx"]
+
+[node name="FatPack2" type="Node2D"]
+
+[node name="Fat" parent="." instance=ExtResource("1_pobwx")]
+position = Vector2(-122, -4)
+
+[node name="Fat2" parent="." instance=ExtResource("1_pobwx")]
+position = Vector2(88, -2)

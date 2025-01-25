@@ -17,6 +17,7 @@ width = 16
 height = 16
 
 [node name="DamageStacker" type="Sprite2D"]
+z_index = 3
 material = SubResource("ShaderMaterial_nbk17")
 rotation = 1.57079
 texture = SubResource("GradientTexture2D_sk0oe")
