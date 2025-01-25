@@ -20,6 +20,11 @@ config/icon="res://icon.svg"
 GlobalBus="*res://scripts/global_bus.gd"
 Constants="*res://scripts/constants.gd"
 
+[display]
+
+window/stretch/mode="viewport"
+window/stretch/aspect="keep_width"
+
 [global_group]
 
 base=""

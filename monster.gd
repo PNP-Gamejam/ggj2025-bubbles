@@ -33,22 +33,14 @@ func _ready() -> void:
 		await get_tree().create_timer(3.0).timeout
 		queue_free()
 	)
-	if _attackable.input_pickable:
-		_attackable.input_event.connect(_on_attackable_input_event)
 	GlobalBus.game_over.connect(func():
 		animated_sprite.play("default")
 		set_process(false)
 	)
 	_boid.owner = owner
 	animated_sprite.material = preload("res://resources/tint_material.tres").duplicate()
-
-func _on_attackable_input_event(viewport: Node, event: InputEvent, shape_idx: int):
-	if event is InputEventMouseButton:
-		if Input.is_action_just_pressed('click_attack'):
-			var damage_clicker = get_tree().get_first_node_in_group("damage_clicker") as DamageClicker
-			damage_clicker.on_click(_attackable)
 	
-
+	
 func _process(delta: float) -> void:
 	if _attackable.hp <= 0:
 		return

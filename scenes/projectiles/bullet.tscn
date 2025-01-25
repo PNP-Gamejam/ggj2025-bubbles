@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://wwahsq8w5r0b"]
 
-[ext_resource type="Script" path="res://bullet.gd" id="1_4irft"]
+[ext_resource type="Script" path="res://scenes/projectiles/bullet.gd" id="1_4irft"]
 [ext_resource type="AudioStream" uid="uid://dfperj5i1kkpu" path="res://sound/BubbleHitSomething/S1.wav" id="3_5wfsg"]
 [ext_resource type="Shader" path="res://bullet_particle.gdshader" id="3_vex8d"]
 [ext_resource type="Texture2D" uid="uid://dbpkprsefo0pe" path="res://assets/Bubbles ammo.png" id="4_tng63"]

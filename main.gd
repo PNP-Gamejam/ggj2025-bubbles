@@ -4,7 +4,7 @@ const SENTRY_COST := 50
 const SENTRY_SPRITE = preload("res://assets/Sentries-AT1.png")
 const SENTRY = preload("res://sentry.tscn")
 
-var money := 5500
+var money := 50
 
 @onready var base: Base = $Base 
 @onready var placeholder: Sprite2D = %Placeholder

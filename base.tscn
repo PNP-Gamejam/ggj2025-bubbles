@@ -95,6 +95,7 @@ z_index = 1
 sprite_frames = SubResource("SpriteFrames_dm0kp")
 
 [node name="Attackable" parent="." instance=ExtResource("3_aiyoj")]
+input_pickable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Attackable"]
 shape = SubResource("CircleShape2D_wpkfj")

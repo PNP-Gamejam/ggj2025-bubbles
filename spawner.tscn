@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://b1u6oagm10ocf"]
+[gd_scene load_steps=6 format=3 uid="uid://b8vagr0yat428"]
 
 [ext_resource type="Script" path="res://spawner.gd" id="1_e51f7"]
 [ext_resource type="PackedScene" uid="uid://5ajshg4k8q4w" path="res://scenes/norman.tscn" id="2_bt7fn"]
@@ -10,6 +10,10 @@
 script = ExtResource("1_e51f7")
 monster_scenes = Array[PackedScene]([ExtResource("2_bt7fn"), ExtResource("3_1x81q"), ExtResource("4_8dmrw"), ExtResource("5_1ragp")])
 
-[node name="Timer" type="Timer" parent="."]
+[node name="MonsterTimer" type="Timer" parent="."]
 wait_time = 2.0
+autostart = true
+
+[node name="BossTimer" type="Timer" parent="."]
+one_shot = true
 autostart = true

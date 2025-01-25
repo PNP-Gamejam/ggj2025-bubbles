@@ -1,5 +1,7 @@
 extends Node
 
+const SPAWN_RADIUS = 1200
+
 const SENTRY_MARGIN = 200
 
 func has_sentry_nearby(pos: Vector2):
