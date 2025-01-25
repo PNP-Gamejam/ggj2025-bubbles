@@ -10,11 +10,15 @@ extends Node2D
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var bullet_spawn_position: Marker2D = $BulletSpawnPosition
 
+@onready var shoot_audio: AudioStreamPlayer = $ShootAudioStreamPlayer
+@onready var destroyed_audio: AudioStreamPlayer = $DestroyedAudioStreamPlayer
 
 func _ready() -> void:
 	_attackable.max_hp = hp
 	_attackable.hp = hp
 	_attackable.died.connect(func():
+		destroyed_audio.play()
+		await destroyed_audio.finished
 		queue_free()
 	)
 	_attacker.attack_damage = attack_damage
@@ -26,6 +30,7 @@ func _on_attack_started(_target: Attackable, damage: int):
 	animated_sprite.play("attack")
 	while animated_sprite.frame <= 6:
 		await animated_sprite.frame_changed
+	shoot_audio.play()
 	bullet.rotation = rotation
 	bullet.global_position = bullet_spawn_position.global_position
 	bullet.damage = damage

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bmbew5t3hprmb"]
+[gd_scene load_steps=23 format=3 uid="uid://bmbew5t3hprmb"]
 
 [ext_resource type="Texture2D" uid="uid://dy21ngd1utx30" path="res://assets/Sentries-AT1.png" id="1_q4qon"]
 [ext_resource type="Script" path="res://sentry.gd" id="1_xb7h0"]
@@ -13,6 +13,11 @@
 [ext_resource type="Texture2D" uid="uid://ca2qgctno3mxb" path="res://assets/Sentries-AT7.png" id="8_j7nfu"]
 [ext_resource type="Texture2D" uid="uid://cneuwj12nyhof" path="res://assets/Sentries-AT8.png" id="9_4hjmg"]
 [ext_resource type="Texture2D" uid="uid://bkfe6fbv8llnk" path="res://assets/Sentries-AT9.png" id="10_vgjsm"]
+[ext_resource type="AudioStream" uid="uid://cu33yi2b7wdj7" path="res://sound/Turret Fire/S1.wav" id="14_u2lq7"]
+[ext_resource type="AudioStream" uid="uid://tpv2cla558l1" path="res://sound/Turret Fire/S2.wav" id="15_n07cx"]
+[ext_resource type="AudioStream" uid="uid://duqujnengo4jm" path="res://sound/Turret Fire/S3.wav" id="16_x1d2g"]
+[ext_resource type="AudioStream" uid="uid://dwouvycy80fc8" path="res://sound/Turret Fire/S4.wav" id="17_or0x7"]
+[ext_resource type="AudioStream" uid="uid://bxkujac2wd5uq" path="res://sound/TurretBroke/S1.wav" id="18_jgcom"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4jtvp"]
 animations = [{
@@ -63,6 +68,15 @@ radius = 45.3982
 [sub_resource type="CircleShape2D" id="CircleShape2D_iut1b"]
 radius = 309.672
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_0f0fd"]
+random_pitch = 1.5
+random_volume_offset_db = 2.0
+streams_count = 4
+stream_0/stream = ExtResource("14_u2lq7")
+stream_1/stream = ExtResource("15_n07cx")
+stream_2/stream = ExtResource("16_x1d2g")
+stream_3/stream = ExtResource("17_or0x7")
+
 [node name="Sentry" type="Node2D"]
 script = ExtResource("1_xb7h0")
 BULLET = ExtResource("2_iakcu")
@@ -91,3 +105,10 @@ shape = SubResource("CircleShape2D_iut1b")
 
 [node name="BulletSpawnPosition" type="Marker2D" parent="."]
 position = Vector2(104, 0)
+
+[node name="ShootAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_0f0fd")
+volume_db = -6.0
+
+[node name="DestroyedAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("18_jgcom")
