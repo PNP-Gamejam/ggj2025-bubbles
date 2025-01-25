@@ -1,9 +1,10 @@
-[gd_scene load_steps=23 format=3 uid="uid://bmbew5t3hprmb"]
+[gd_scene load_steps=34 format=3 uid="uid://bmbew5t3hprmb"]
 
 [ext_resource type="Texture2D" uid="uid://dy21ngd1utx30" path="res://assets/Sentries-AT1.png" id="1_q4qon"]
 [ext_resource type="Script" path="res://sentry.gd" id="1_xb7h0"]
 [ext_resource type="Script" path="res://attackable.gd" id="2_306xv"]
 [ext_resource type="PackedScene" uid="uid://wwahsq8w5r0b" path="res://bullet.tscn" id="2_iakcu"]
+[ext_resource type="Shader" path="res://resources/circle_with_vertex.gdshader" id="3_4vq7v"]
 [ext_resource type="PackedScene" uid="uid://4u16gdplxy4l" path="res://attacker.tscn" id="3_5gn1u"]
 [ext_resource type="Texture2D" uid="uid://cgfd8iquynijn" path="res://assets/Sentries-AT2.png" id="3_mdu5p"]
 [ext_resource type="Texture2D" uid="uid://wdfjbgn7lodm" path="res://assets/Sentries-AT3.png" id="4_t5tvt"]
@@ -18,6 +19,47 @@
 [ext_resource type="AudioStream" uid="uid://duqujnengo4jm" path="res://sound/Turret Fire/S3.wav" id="16_x1d2g"]
 [ext_resource type="AudioStream" uid="uid://dwouvycy80fc8" path="res://sound/Turret Fire/S4.wav" id="17_or0x7"]
 [ext_resource type="AudioStream" uid="uid://bxkujac2wd5uq" path="res://sound/TurretBroke/S1.wav" id="18_jgcom"]
+[ext_resource type="AudioStream" uid="uid://bmpucs5cs8qa2" path="res://sound/placeSound/S1.wav" id="20_l6qcb"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nsse8"]
+shader = ExtResource("3_4vq7v")
+shader_parameter/color = Color(0.403922, 0.25098, 0.172549, 1)
+
+[sub_resource type="Curve" id="Curve_oayyp"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_1jegp"]
+curve = SubResource("Curve_oayyp")
+
+[sub_resource type="Curve" id="Curve_xrd6h"]
+max_value = 2.0
+_data = [Vector2(0, 2), 0.0, 0.0, 0, 0, Vector2(1, 0), -0.181878, 0.0, 0, 0]
+point_count = 2
+metadata/_snap_enabled = true
+
+[sub_resource type="CurveTexture" id="CurveTexture_lu6j7"]
+curve = SubResource("Curve_xrd6h")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_tsdsx"]
+particle_flag_disable_z = true
+angle_min = -137.4
+angle_max = 274.7
+spread = 180.0
+flatness = 1.0
+initial_velocity_min = 136.92
+initial_velocity_max = 193.08
+damping_min = 80.0
+damping_max = 90.0
+damping_curve = SubResource("CurveTexture_lu6j7")
+scale_min = 0.8
+alpha_curve = SubResource("CurveTexture_1jegp")
+
+[sub_resource type="Gradient" id="Gradient_gpdko"]
+colors = PackedColorArray(0.631373, 0.372549, 0, 1, 0.642696, 0.391822, 0.0307167, 0.969283)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_dvjoe"]
+gradient = SubResource("Gradient_gpdko")
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4jtvp"]
 animations = [{
@@ -77,9 +119,24 @@ stream_1/stream = ExtResource("15_n07cx")
 stream_2/stream = ExtResource("16_x1d2g")
 stream_3/stream = ExtResource("17_or0x7")
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_m2glq"]
+random_pitch = 1.2
+random_volume_offset_db = 2.0
+streams_count = 1
+stream_0/stream = ExtResource("20_l6qcb")
+
 [node name="Sentry" type="Node2D"]
 script = ExtResource("1_xb7h0")
 BULLET = ExtResource("2_iakcu")
+
+[node name="SpawnParticles2D" type="GPUParticles2D" parent="."]
+show_behind_parent = true
+material = SubResource("ShaderMaterial_nsse8")
+emitting = false
+process_material = SubResource("ParticleProcessMaterial_tsdsx")
+texture = SubResource("GradientTexture2D_dvjoe")
+one_shot = true
+explosiveness = 1.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(35, 0)
@@ -112,3 +169,7 @@ volume_db = -6.0
 
 [node name="DestroyedAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("18_jgcom")
+
+[node name="SpawnAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_m2glq")
+volume_db = 5.0

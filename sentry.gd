@@ -12,8 +12,13 @@ extends Node2D
 
 @onready var shoot_audio: AudioStreamPlayer = $ShootAudioStreamPlayer
 @onready var destroyed_audio: AudioStreamPlayer = $DestroyedAudioStreamPlayer
+@onready var spawn_audio: AudioStreamPlayer = $SpawnAudioStreamPlayer
+
+@onready var spawn_particles: GPUParticles2D = $SpawnParticles2D
 
 func _ready() -> void:
+	spawn_audio.play()
+	spawn_particles.emitting = true
 	_attackable.max_hp = hp
 	_attackable.hp = hp
 	_attackable.died.connect(func():
