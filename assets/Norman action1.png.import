@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c7ycnhy7dx87w"
-path="res://.godot/imported/00000.png-aae55d8e16afe665878abc0b1979d509.ctex"
+uid="uid://b4ylp4q6o4uw"
+path="res://.godot/imported/Norman action1.png-80e5e023daf6ec5903c67f3973d7404f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://main_menu/res/00000.png"
-dest_files=["res://.godot/imported/00000.png-aae55d8e16afe665878abc0b1979d509.ctex"]
+source_file="res://assets/Norman action1.png"
+dest_files=["res://.godot/imported/Norman action1.png-80e5e023daf6ec5903c67f3973d7404f.ctex"]
 
 [params]
 
