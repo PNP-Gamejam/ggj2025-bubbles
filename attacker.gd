@@ -21,7 +21,6 @@ var current_target: Attackable:
 		return
 
 var _current_target: Attackable = null
-var _reset_target_callable: Callable = func(): pass
 @onready var _attack_timer: Timer = $AttackTimer
 
 
@@ -42,8 +41,7 @@ func _on_area_entered(area: Area2D):
 	if area is Attackable:
 		_current_target = area
 		_attack_timer.start()
-		_reset_target_callable = func(): _current_target = null
-		area.died.connect(_reset_target_callable)
+		area.died.connect(stop_attack)
 
 
 func _on_area_exited(area: Area2D):
@@ -52,5 +50,8 @@ func _on_area_exited(area: Area2D):
 	if area == _current_target:
 		_current_target = null
 		_attack_timer.stop()
-		area.died.disconnect(_reset_target_callable)
-		_reset_target_callable = func(): pass
+		area.died.disconnect(stop_attack)
+
+
+func stop_attack():
+	_current_target = null

@@ -1,0 +1,64 @@
+[gd_scene load_steps=10 format=3 uid="uid://5ajshg4k8q4w"]
+
+[ext_resource type="PackedScene" uid="uid://cw557oc4ju5no" path="res://monster.tscn" id="1_f42rp"]
+[ext_resource type="Texture2D" uid="uid://b4ylp4q6o4uw" path="res://assets/Norman action1.png" id="2_paqs5"]
+[ext_resource type="Texture2D" uid="uid://dnlyvq0ygcfl8" path="res://assets/Norman action2.png" id="3_xnceh"]
+[ext_resource type="Texture2D" uid="uid://16m284ebwc8d" path="res://assets/Norman death.png" id="4_4c3wn"]
+[ext_resource type="Texture2D" uid="uid://dwojmefsmse8v" path="res://assets/Norman stand.png" id="5_du7hf"]
+[ext_resource type="Texture2D" uid="uid://cykjrerp3g4y0" path="res://assets/Norman walk1.png" id="6_fxxye"]
+[ext_resource type="Texture2D" uid="uid://d0sx3vtrt83py" path="res://assets/Norman walk2.png" id="7_wnqr3"]
+[ext_resource type="Texture2D" uid="uid://b7syyjrxo4hll" path="res://icon.svg" id="8_ah1ep"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fot25"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_paqs5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_xnceh")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_4c3wn")
+}],
+"loop": true,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_du7hf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_fxxye")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_wnqr3")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[node name="Norman" type="Node2D"]
+
+[node name="Monster" parent="." instance=ExtResource("1_f42rp")]
+SPEED = 30.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Monster"]
+position = Vector2(-14, 31)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_fot25")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("8_ah1ep")

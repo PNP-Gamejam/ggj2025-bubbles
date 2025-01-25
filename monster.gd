@@ -9,6 +9,7 @@ extends Node2D
 @onready var _attackable: Attackable = $Attackable
 @onready var _attacker: Attacker = $Attacker
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var _boid: Boid = $Boid
 
 
 func _ready() -> void:
@@ -18,6 +19,7 @@ func _ready() -> void:
 	_attackable.hp = hp
 	_attackable.died.connect(func():
 		animated_sprite.play("death")
+		_attacker.stop_attack()
 		GlobalBus.money_dropped.emit(bounty)
 		await get_tree().create_timer(3.0).timeout
 		queue_free()
@@ -28,6 +30,7 @@ func _ready() -> void:
 		animated_sprite.play("default")
 		set_process(false)
 	)
+	_boid.owner = owner
 
 func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int):
 	if event is InputEventMouseButton:
@@ -44,7 +47,7 @@ func _process(delta: float) -> void:
 	rotation += -PI/2
 	if !_attacker.is_attacking:
 		var dir = global_position.direction_to(base.global_position)
-		global_position += SPEED * dir * delta
+		owner.global_position += SPEED * dir * delta
 		animated_sprite.play("walk")
 	else:
 		animated_sprite.play("attack")

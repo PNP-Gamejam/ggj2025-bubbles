@@ -1,0 +1,60 @@
+[gd_scene load_steps=9 format=3 uid="uid://5s5hxbkgbg0n"]
+
+[ext_resource type="PackedScene" uid="uid://cw557oc4ju5no" path="res://monster.tscn" id="1_k6d8l"]
+[ext_resource type="Texture2D" uid="uid://qy2a74pg3uro" path="res://assets/Fat action1.png" id="2_kfxtp"]
+[ext_resource type="Texture2D" uid="uid://dewdxk5u7k3dv" path="res://assets/Fat action2.png" id="3_mdri4"]
+[ext_resource type="Texture2D" uid="uid://crjrsfg7rci66" path="res://assets/Fat death .png" id="4_7b1xe"]
+[ext_resource type="Texture2D" uid="uid://ch7tuhqpkr5qm" path="res://assets/Fat stand.png" id="5_obg6s"]
+[ext_resource type="Texture2D" uid="uid://7g4wntc2810s" path="res://assets/Fat walk1.png" id="6_p4oqb"]
+[ext_resource type="Texture2D" uid="uid://b0ech5f3d3q0m" path="res://assets/Fat walk2.png" id="7_votjc"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e03ma"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_kfxtp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_mdri4")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_7b1xe")
+}],
+"loop": true,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_obg6s")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_p4oqb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_votjc")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[node name="Fat" type="Node2D"]
+
+[node name="Monster" parent="." instance=ExtResource("1_k6d8l")]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Monster"]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_e03ma")
+animation = &"attack"
+autoplay = "default"
