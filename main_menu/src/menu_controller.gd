@@ -90,9 +90,7 @@ func _ready():
 
 
 func _on_start_button_pressed():
-	# Put your load scene here
-	# Check the documentation https://docs.godotengine.org/en/stable/tutorials/scripting/change_scenes_manually.html
-	pass  # Replace with function body.
+	get_tree().change_scene_to_file("res://main.tscn")
 
 
 func _on_option_button_pressed():

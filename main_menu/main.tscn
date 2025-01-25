@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://biyyejk3jgomd"]
 
-[ext_resource type="Script" path="res://src/menu_controller.gd" id="1_7x6vp"]
-[ext_resource type="Texture2D" uid="uid://c7ycnhy7dx87w" path="res://res/00000.png" id="1_lg33l"]
-[ext_resource type="LabelSettings" uid="uid://1oyxx8ys1m6d" path="res://font.res" id="2_yfgsl"]
-[ext_resource type="Script" path="res://src/scroll_label.gd" id="3_v2ba3"]
+[ext_resource type="Script" path="res://main_menu/src/menu_controller.gd" id="1_7x6vp"]
+[ext_resource type="Texture2D" uid="uid://8x2yqsh3qtf7" path="res://assets/Bg. jpg.jpg" id="2_edh5o"]
+[ext_resource type="LabelSettings" uid="uid://1oyxx8ys1m6d" path="res://main_menu/font.res" id="2_yfgsl"]
+[ext_resource type="Script" path="res://main_menu/src/scroll_label.gd" id="3_v2ba3"]
 
 [node name="main" type="Node"]
 
@@ -26,7 +26,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_lg33l")
+texture = ExtResource("2_edh5o")
 expand_mode = 1
 
 [node name="MainContainer" type="VBoxContainer" parent="CanvasLayer/MainMenu"]
@@ -117,7 +117,7 @@ popup/item_1/text = "800x600"
 popup/item_1/id = 1
 popup/item_2/text = "1024x768"
 popup/item_2/id = 2
-popup/item_3/text = "1280x720"
+popup/item_3/text = "1152x648"
 popup/item_3/id = 3
 popup/item_4/text = "1366x768"
 popup/item_4/id = 4
