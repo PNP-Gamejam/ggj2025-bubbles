@@ -1,11 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://dope7ywd57rhn"]
+[gd_scene load_steps=12 format=3 uid="uid://dope7ywd57rhn"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_ac088"]
 [ext_resource type="PackedScene" uid="uid://cw557oc4ju5no" path="res://monster.tscn" id="1_vvtl6"]
 [ext_resource type="PackedScene" uid="uid://tbcd247fin7t" path="res://base.tscn" id="2_g7t2p"]
 [ext_resource type="Script" path="res://damage_clicker.gd" id="3_1wouj"]
 [ext_resource type="PackedScene" uid="uid://bohl7r3rctjnj" path="res://damage_stacker.tscn" id="4_n3h7q"]
-[ext_resource type="PackedScene" uid="uid://bmbew5t3hprmb" path="res://sentry.tscn" id="5_sykte"]
 [ext_resource type="Texture2D" uid="uid://8x2yqsh3qtf7" path="res://assets/Bg. jpg.jpg" id="6_x3iyv"]
 [ext_resource type="Script" path="res://placeholder.gd" id="7_ttnha"]
 
@@ -25,6 +24,9 @@ gradient = SubResource("Gradient_0i0g3")
 [node name="Main" type="Node2D"]
 script = ExtResource("1_ac088")
 
+[node name="Base" parent="." instance=ExtResource("2_g7t2p")]
+position = Vector2(611, 306)
+
 [node name="Monster" parent="." instance=ExtResource("1_vvtl6")]
 position = Vector2(33, -71)
 
@@ -36,25 +38,22 @@ SPEED = 300.0
 position = Vector2(1562, 65)
 SPEED = 300.0
 
-[node name="Base" parent="." instance=ExtResource("2_g7t2p")]
-position = Vector2(611, 306)
-
 [node name="DamageClicker" type="Node" parent="." groups=["damage_clicker"]]
 script = ExtResource("3_1wouj")
 DAMAGE_STACKER = ExtResource("4_n3h7q")
 
-[node name="Sentry" parent="." instance=ExtResource("5_sykte")]
-position = Vector2(150, 180)
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="UI" type="CanvasLayer" parent="."]
 layer = -1
 
-[node name="BG" type="TextureRect" parent="CanvasLayer"]
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="BG" type="TextureRect" parent="UI"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("6_x3iyv")
 
-[node name="UI" type="Control" parent="CanvasLayer"]
+[node name="UI" type="Control" parent="UI"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -63,7 +62,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/UI"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/UI"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 1.0
@@ -76,31 +75,31 @@ grow_horizontal = 0
 grow_vertical = 0
 theme_override_constants/separation = 20
 
-[node name="MoneyLabel" type="Label" parent="CanvasLayer/UI/VBoxContainer"]
+[node name="MoneyLabel" type="Label" parent="UI/UI/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Money: xxx"
 horizontal_alignment = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/UI/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/UI/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 20
 alignment = 2
 
-[node name="SentryButton" type="TextureButton" parent="CanvasLayer/UI/VBoxContainer/HBoxContainer"]
+[node name="SentryButton" type="TextureButton" parent="UI/UI/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 texture_normal = SubResource("GradientTexture2D_ug6pl")
 
-[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/UI/VBoxContainer/HBoxContainer"]
+[node name="TextureRect2" type="TextureRect" parent="UI/UI/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 texture = SubResource("GradientTexture2D_34c6i")
 
-[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/UI/VBoxContainer/HBoxContainer"]
+[node name="TextureRect3" type="TextureRect" parent="UI/UI/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 texture = SubResource("GradientTexture2D_34c6i")
 
-[node name="Placeholder" type="Sprite2D" parent="CanvasLayer"]
+[node name="Placeholder" type="Sprite2D" parent="UI"]
 unique_name_in_owner = true
 modulate = Color(1, 1, 1, 0.286275)
 scale = Vector2(0.5, 0.5)

@@ -8,7 +8,6 @@ func _ready() -> void:
 	_attackable.max_hp = hp
 	_attackable.died.connect(func(): print("game_over"))
 	_attackable.hp_changed.connect(func(): 
-		print("attacked, hp now at: %d" % _attackable.hp)
 		if _attackable.hp > 0:
 			animated_sprite.frame = _attackable.max_hp / _attackable.hp
 	)

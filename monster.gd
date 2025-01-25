@@ -4,6 +4,7 @@ extends Node2D
 @export var attack_cooldown := 1.0
 @export var hp := 55
 @export var SPEED := 300.0
+@export var bounty := 50 
 
 @onready var _attackable: Attackable = $Attackable
 @onready var _attacker: Attacker = $Attacker
@@ -17,6 +18,7 @@ func _ready() -> void:
 	_attackable.hp = hp
 	_attackable.died.connect(func():
 		animated_sprite.play("death")
+		GlobalBus.money_dropped.emit(bounty)
 		await get_tree().create_timer(3.0).timeout
 		queue_free()
 	)

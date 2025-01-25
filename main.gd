@@ -4,15 +4,16 @@ const SENTRY_COST := 50
 const SENTRY_SPRITE = preload("res://assets/Sentries-AT1.png")
 const SENTRY = preload("res://sentry.tscn")
 
+var money := 100
+
 @onready var placeholder: Sprite2D = %Placeholder
 @onready var sentry_button: TextureButton = %SentryButton
 @onready var money_label: Label = %MoneyLabel
 
-var money := 100
-
 var on_click := func(): pass
 	
 func _ready() -> void:
+	GlobalBus.money_dropped.connect(func(amount:float): money += amount)
 	sentry_button.pressed.connect(func():
 		if money >= 50:
 			placeholder.texture = SENTRY_SPRITE
@@ -23,7 +24,7 @@ func _ready() -> void:
 	
 	
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("click_attack"):
+	if event.is_action_pressed("place_sentry"):
 		on_click.call()
 		on_click = func(): pass
 		placeholder.texture = null
