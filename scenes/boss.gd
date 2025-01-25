@@ -6,12 +6,16 @@ const SPEED = 70.0
 @onready var base_position: Vector2 = get_tree().get_first_node_in_group("base").global_position
 @onready var _attackable: Attackable = $Attackable
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
-@onready var _death_audio: AudioStreamPlayer = $DeathAudioStreamPlayer
-@onready var _hurt_audio: AudioStreamPlayer = $HurtAudioStreamPlayer
+
 @onready var _visible_notifier: VisibleOnScreenNotifier2D = $VisibleOnScreenNotifier2D
 @onready var _fall_back_timer: Timer = $FallBackTimer
 @onready var _missile_spawn_position: Marker2D = $MissileSpawnPosition
 @onready var backup_missile_timer: Timer = $BackupMissileTimer
+
+@onready var _death_audio: AudioStreamPlayer = $DeathAudioStreamPlayer
+@onready var _hurt_audio: AudioStreamPlayer = $HurtAudioStreamPlayer
+@onready var _walk_audio: AudioStreamPlayer = $WalkAudioStreamPlayer
+@onready var _attack_audio: AudioStreamPlayer = $AttackAudioStreamPlayer
 
 const MISSILE = preload("res://scenes/projectiles/missile.tscn")
 const DISTANCE_BEFORE_SHOOT = 700.0
@@ -38,6 +42,10 @@ func _ready() -> void:
 		animated_sprite.play("default")
 		set_process(false)
 	)
+	animated_sprite.frame_changed.connect(func():
+		if animated_sprite.animation == "walk":
+			_walk_audio.play()
+	)
 	
 	backup_missile_timer.timeout.connect(_spawn_missiles)
 	_fall_back_timer.timeout.connect(_start_walk)
@@ -63,6 +71,7 @@ func _start_shoot():
 		missile.global_position = _missile_spawn_position.global_position
 		missile.look_at(base_position)
 		get_tree().current_scene.add_child(missile)
+		_attack_audio.play()
 	await get_tree().create_timer(3.0).timeout
 	_start_fallback()
 

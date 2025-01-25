@@ -16,6 +16,7 @@ gradient = SubResource("Gradient_f8ova")
 height = 8
 
 [node name="HpBar" type="Sprite2D"]
+z_index = 10
 material = SubResource("ShaderMaterial_q71hp")
 texture = SubResource("GradientTexture2D_8shwe")
 script = ExtResource("1_41yxs")

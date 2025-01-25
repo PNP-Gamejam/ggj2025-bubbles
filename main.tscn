@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dope7ywd57rhn"]
+[gd_scene load_steps=19 format=3 uid="uid://dope7ywd57rhn"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_ac088"]
 [ext_resource type="PackedScene" uid="uid://tbcd247fin7t" path="res://base.tscn" id="2_g7t2p"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://cqw313np7im3q" path="res://scenes/skinny.tscn" id="11_qwpp6"]
 [ext_resource type="Texture2D" uid="uid://03un3onnow4a" path="res://assets/Hold triple sentry icon.png" id="12_4h0xf"]
 [ext_resource type="Texture2D" uid="uid://sh7d00701dpv" path="res://assets/Hold heavy sentry icon.png" id="14_6igoi"]
+[ext_resource type="Texture2D" uid="uid://sph5q1iv550a" path="res://assets/Game over.png" id="15_2peyi"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_scyu8"]
 bg_color = Color(0.17, 0.17, 0.17, 0.576471)
@@ -93,6 +94,7 @@ theme_override_constants/separation = 20
 [node name="MoneyLabel" type="Label" parent="UI/UI/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_font_sizes/font_size = 24
 text = "Money: xxx"
 horizontal_alignment = 2
 
@@ -165,55 +167,55 @@ grow_vertical = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_scyu8")
 
-[node name="GameOverPanel" type="Panel" parent="UI"]
+[node name="GameOverPanel" type="Control" parent="UI"]
 unique_name_in_owner = true
 process_mode = 3
 visible = false
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 326.0
-offset_top = 137.0
-offset_right = -326.0
-offset_bottom = -137.0
+offset_left = 107.0
+offset_top = 130.0
+offset_right = -107.0
+offset_bottom = -130.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="UI/GameOverPanel"]
+[node name="GameOverTexture" type="TextureRect" parent="UI/GameOverPanel"]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_top = 13.0
-offset_bottom = 36.0
 grow_horizontal = 2
-theme_override_font_sizes/font_size = 32
-text = "Game over"
-horizontal_alignment = 1
+texture = ExtResource("15_2peyi")
 
 [node name="HBoxContainer" type="VBoxContainer" parent="UI/GameOverPanel"]
 layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
+anchors_preset = -1
+anchor_left = 0.339
+anchor_top = 0.634
+anchor_right = 0.661
 anchor_bottom = 1.0
-offset_left = -75.0
-offset_top = -98.0
-offset_right = 75.0
+offset_left = 0.0179749
+offset_top = 0.00799561
+offset_right = -0.0180054
 offset_bottom = -32.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_constants/separation = 20
 alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="RetryButton" type="Button" parent="UI/GameOverPanel/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_font_sizes/font_size = 32
 text = "Retry"
 
 [node name="MainMenuButton" type="Button" parent="UI/GameOverPanel/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_font_sizes/font_size = 32
 text = "Main Menu"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
@@ -222,4 +224,14 @@ volume_db = -10.0
 autoplay = true
 
 [node name="Skinny" parent="." instance=ExtResource("11_qwpp6")]
-position = Vector2(810, 178)
+position = Vector2(1017, 314)
+
+[node name="Label" type="Label" parent="Skinny/Monster" index="7"]
+offset_left = 21.0
+offset_top = 38.0
+offset_right = 125.0
+offset_bottom = 72.0
+theme_override_font_sizes/font_size = 24
+text = "Click me!"
+
+[editable path="Skinny"]

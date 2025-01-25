@@ -16,7 +16,7 @@ func _ready() -> void:
 	
 func _spawn_boss() -> void:
 	print("NICE")
-	monster_timer.wait_time = monster_cooldown_time / 2.0
+	monster_timer.wait_time = monster_cooldown_time * 2.0
 	var boss = BOSS.instantiate()
 	boss.global_position = Vector2(9999,9999)
 	get_tree().current_scene.add_child(boss)

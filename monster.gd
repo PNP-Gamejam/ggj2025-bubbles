@@ -31,7 +31,7 @@ func _ready() -> void:
 		_attacker.stop_attack()
 		GlobalBus.money_dropped.emit(bounty)
 		await get_tree().create_timer(3.0).timeout
-		queue_free()
+		owner.queue_free()
 	)
 	GlobalBus.game_over.connect(func():
 		animated_sprite.play("default")

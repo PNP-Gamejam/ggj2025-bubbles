@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/projectiles/missile.gd" id="1_5a1p2"]
 [ext_resource type="Texture2D" uid="uid://r66bnude761m" path="res://assets/Boss ammo.png" id="2_sly7b"]
-[ext_resource type="AudioStream" uid="uid://dfperj5i1kkpu" path="res://sound/BubbleHitSomething/S1.wav" id="3_d0on2"]
+[ext_resource type="AudioStream" uid="uid://dulwk5mi1lt3l" path="res://sound/MissleSound/S1.wav" id="4_qlh4h"]
 [ext_resource type="Script" path="res://attackable.gd" id="5_3dikc"]
 [ext_resource type="Texture2D" uid="uid://bqabivfat6g26" path="res://assets/Explosion/explosion00.png" id="5_kbmhv"]
 [ext_resource type="Texture2D" uid="uid://dx0jexxm6kvqa" path="res://assets/Explosion/explosion01.png" id="6_n4o2w"]
@@ -20,12 +20,6 @@ height = 88.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_eedcc"]
 height = 58.0
-
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_46djq"]
-playback_mode = 1
-random_pitch = 3.0
-streams_count = 1
-stream_0/stream = ExtResource("3_d0on2")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_t0x5x"]
 particle_flag_disable_z = true
@@ -72,6 +66,11 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.867521, 0.84188)
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_46djq"]
+random_pitch = 1.2
+streams_count = 1
+stream_0/stream = ExtResource("4_qlh4h")
+
 [node name="Missile" type="Area2D"]
 collision_layer = 0
 script = ExtResource("1_5a1p2")
@@ -96,10 +95,6 @@ shape = SubResource("CapsuleShape2D_eedcc")
 rotation = -1.57079
 texture = ExtResource("2_sly7b")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = SubResource("AudioStreamRandomizer_46djq")
-volume_db = -6.0
-
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 scale = Vector2(0.1, 0.1)
 emitting = false
@@ -113,3 +108,7 @@ position = Vector2(-22, 0)
 rotation = -1.57079
 process_material = SubResource("ParticleProcessMaterial_0m0nt")
 texture = SubResource("GradientTexture2D_27cku")
+
+[node name="ImpactAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_46djq")
+volume_db = -12.0

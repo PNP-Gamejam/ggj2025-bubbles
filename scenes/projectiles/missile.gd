@@ -8,10 +8,9 @@ var is_destroying = false
 
 @onready var impact_particles: GPUParticles2D = $GPUParticles2D
 @onready var sprite_2d: Sprite2D = $Sprite2D
-@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
+@onready var impact_audio: AudioStreamPlayer = $ImpactAudioStreamPlayer
 @onready var trail_particles_2d: GPUParticles2D = $TrailParticles2D
 @onready var attackable: Attackable = $Attackable
-@onready var backup_missile_timer: Timer = $BackupMissileTimer
 
 func _ready() -> void:
 	attackable.max_hp = hp
@@ -21,19 +20,24 @@ func _ready() -> void:
 	await get_tree().create_timer(1.0).timeout
 	trail_particles_2d.emitting = true
 
+
 func _on_area_entered(area: Area2D):
 	if area is Attackable and area != attackable:
 		area.hp -= damage
 		_destroy_self()
 
+
 func _destroy_self():
 	if is_destroying: return
 	is_destroying = true
 	sprite_2d.hide()
+	set_deferred("monitoring", false)
 	impact_particles.restart()
-	audio_stream_player.play()
+	impact_audio.play()
 	await impact_particles.finished
 	queue_free()
 
+
 func _physics_process(delta: float) -> void:
+	if is_destroying: return
 	position += Vector2.RIGHT.rotated(rotation) * delta * SPEED
