@@ -22,10 +22,12 @@ func _ready() -> void:
 		await get_tree().create_timer(3.0).timeout
 		queue_free()
 	)
-	#_attackable.hp_changed.connect(func(): print("%s current hp %d" % [name, _attackable.hp]))
 	if _attackable.input_pickable:
 		_attackable.input_event.connect(_on_input_event)
-
+	GlobalBus.game_over.connect(func():
+		animated_sprite.play("default")
+		set_process(false)
+	)
 
 func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int):
 	if event is InputEventMouseButton:

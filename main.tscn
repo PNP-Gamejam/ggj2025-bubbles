@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://dope7ywd57rhn"]
+[gd_scene load_steps=13 format=3 uid="uid://dope7ywd57rhn"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_ac088"]
 [ext_resource type="PackedScene" uid="uid://cw557oc4ju5no" path="res://monster.tscn" id="1_vvtl6"]
 [ext_resource type="PackedScene" uid="uid://tbcd247fin7t" path="res://base.tscn" id="2_g7t2p"]
 [ext_resource type="Script" path="res://damage_clicker.gd" id="3_1wouj"]
 [ext_resource type="PackedScene" uid="uid://bohl7r3rctjnj" path="res://damage_stacker.tscn" id="4_n3h7q"]
+[ext_resource type="PackedScene" uid="uid://bmbew5t3hprmb" path="res://sentry.tscn" id="5_sykte"]
 [ext_resource type="Texture2D" uid="uid://8x2yqsh3qtf7" path="res://assets/Bg. jpg.jpg" id="6_x3iyv"]
 [ext_resource type="Script" path="res://placeholder.gd" id="7_ttnha"]
 
@@ -24,8 +25,12 @@ gradient = SubResource("Gradient_0i0g3")
 [node name="Main" type="Node2D"]
 script = ExtResource("1_ac088")
 
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(609, 288)
+zoom = Vector2(0.5, 0.5)
+
 [node name="Base" parent="." instance=ExtResource("2_g7t2p")]
-position = Vector2(611, 306)
+position = Vector2(573, 298)
 
 [node name="Monster" parent="." instance=ExtResource("1_vvtl6")]
 position = Vector2(33, -71)
@@ -42,16 +47,25 @@ SPEED = 300.0
 script = ExtResource("3_1wouj")
 DAMAGE_STACKER = ExtResource("4_n3h7q")
 
-[node name="UI" type="CanvasLayer" parent="."]
+[node name="BG" type="CanvasLayer" parent="."]
 layer = -1
 
-[node name="BG" type="TextureRect" parent="UI"]
+[node name="BG" type="TextureRect" parent="BG"]
+z_index = -1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("6_x3iyv")
+
+[node name="Placeholder" type="Sprite2D" parent="BG"]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0.286275)
+scale = Vector2(0.5, 0.5)
+script = ExtResource("7_ttnha")
+
+[node name="UI" type="CanvasLayer" parent="."]
 
 [node name="UI" type="Control" parent="UI"]
 layout_mode = 3
@@ -99,12 +113,56 @@ texture = SubResource("GradientTexture2D_34c6i")
 layout_mode = 2
 texture = SubResource("GradientTexture2D_34c6i")
 
-[node name="Placeholder" type="Sprite2D" parent="UI"]
+[node name="GameOverPanel" type="Panel" parent="UI"]
 unique_name_in_owner = true
-modulate = Color(1, 1, 1, 0.286275)
-scale = Vector2(0.5, 0.5)
-script = ExtResource("7_ttnha")
+process_mode = 3
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 326.0
+offset_top = 137.0
+offset_right = -326.0
+offset_bottom = -137.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(609, 288)
-zoom = Vector2(0.5, 0.5)
+[node name="Label" type="Label" parent="UI/GameOverPanel"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 13.0
+offset_bottom = 36.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 32
+text = "Game over"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="VBoxContainer" parent="UI/GameOverPanel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -75.0
+offset_top = -98.0
+offset_right = 75.0
+offset_bottom = -32.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="RetryButton" type="Button" parent="UI/GameOverPanel/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Retry"
+
+[node name="MainMenuButton" type="Button" parent="UI/GameOverPanel/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Main Menu"
+
+[node name="Sentry" parent="." instance=ExtResource("5_sykte")]
+position = Vector2(115, 609)

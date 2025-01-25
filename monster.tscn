@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cw557oc4ju5no"]
+[gd_scene load_steps=16 format=3 uid="uid://cw557oc4ju5no"]
 
 [ext_resource type="Script" path="res://monster.gd" id="1_t7yji"]
 [ext_resource type="Texture2D" uid="uid://b03xjssoduj5j" path="res://assets/Skinny action 1.png" id="3_7q3tt"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://4u16gdplxy4l" path="res://attacker.tscn" id="4_4fcf1"]
 [ext_resource type="Texture2D" uid="uid://l3u0t62x3lyj" path="res://assets/Skinny action 2.png" id="4_d0xsd"]
 [ext_resource type="PackedScene" uid="uid://jw5bme151i83" path="res://hp_bar.tscn" id="4_xktl5"]
+[ext_resource type="Texture2D" uid="uid://c42a4jbx52rpk" path="res://assets/Skinny stand act.png" id="5_0gn5e"]
 [ext_resource type="Shader" path="res://resources/hp_bar.gdshader" id="5_3uyto"]
 [ext_resource type="Texture2D" uid="uid://c4bafeqxdpq70" path="res://assets/Skinny death.png" id="5_ditji"]
 [ext_resource type="Texture2D" uid="uid://fjlecymmf4un" path="res://assets/Skinny walk 1 act.png" id="6_jw6hh"]
@@ -30,6 +31,14 @@ animations = [{
 }],
 "loop": true,
 "name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_0gn5e")
+}],
+"loop": true,
+"name": &"default",
 "speed": 5.0
 }, {
 "frames": [{
@@ -65,7 +74,7 @@ metadata/_edit_vertical_guides_ = [1155.0]
 position = Vector2(-7, 34)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_qtkff")
-animation = &"attack"
+autoplay = "default"
 
 [node name="Attackable" parent="." instance=ExtResource("3_evpw1")]
 collision_layer = 2
