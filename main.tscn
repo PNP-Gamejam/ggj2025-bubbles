@@ -1,8 +1,9 @@
-[gd_scene load_steps=16 format=3 uid="uid://dope7ywd57rhn"]
+[gd_scene load_steps=17 format=3 uid="uid://dope7ywd57rhn"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_ac088"]
 [ext_resource type="PackedScene" uid="uid://tbcd247fin7t" path="res://base.tscn" id="2_g7t2p"]
 [ext_resource type="Script" path="res://damage_clicker.gd" id="3_1wouj"]
+[ext_resource type="Script" path="res://camera.gd" id="3_7oor4"]
 [ext_resource type="PackedScene" uid="uid://bohl7r3rctjnj" path="res://damage_stacker.tscn" id="4_n3h7q"]
 [ext_resource type="Texture2D" uid="uid://8x2yqsh3qtf7" path="res://assets/Bg. jpg.jpg" id="6_x3iyv"]
 [ext_resource type="Script" path="res://placeholder.gd" id="7_ttnha"]
@@ -35,6 +36,7 @@ position = Vector2(572, 298)
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(609, 288)
 zoom = Vector2(0.5, 0.5)
+script = ExtResource("3_7oor4")
 
 [node name="Base" parent="." instance=ExtResource("2_g7t2p")]
 position = Vector2(573, 298)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://tbcd247fin7t"]
+[gd_scene load_steps=22 format=3 uid="uid://tbcd247fin7t"]
 
 [ext_resource type="Script" path="res://base.gd" id="1_5f5so"]
 [ext_resource type="Texture2D" uid="uid://d4nfc4x1j5jbf" path="res://assets/Main bubble hp 0.png" id="2_vokf3"]
@@ -10,6 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://2lk25f0hpg0w" path="res://assets/Main bubble hp 60.png" id="5_nexw6"]
 [ext_resource type="Texture2D" uid="uid://dl61yvnr55xph" path="res://assets/Main bubble hp 80.png" id="6_tl337"]
 [ext_resource type="Texture2D" uid="uid://lmpeofo4s34a" path="res://assets/Main bubble hp 100.png" id="7_pne2c"]
+[ext_resource type="Texture2D" uid="uid://dbpkprsefo0pe" path="res://assets/Bubbles ammo.png" id="11_7mayq"]
+[ext_resource type="Shader" path="res://bullet_particle.gdshader" id="11_45roo"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_dm0kp"]
 animations = [{
@@ -46,6 +48,45 @@ shader = ExtResource("5_goeno")
 shader_parameter/hp = 10.0
 shader_parameter/max_hp = 10.0
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yuqw7"]
+shader = ExtResource("11_45roo")
+
+[sub_resource type="Curve" id="Curve_oayyp"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_1jegp"]
+curve = SubResource("Curve_oayyp")
+
+[sub_resource type="Curve" id="Curve_xrd6h"]
+max_value = 2.0
+_data = [Vector2(0, 2), 0.0, 0.0, 0, 0, Vector2(1, 0), -0.181878, 0.0, 0, 0]
+point_count = 2
+metadata/_snap_enabled = true
+
+[sub_resource type="CurveTexture" id="CurveTexture_lu6j7"]
+curve = SubResource("Curve_xrd6h")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_p3v0p"]
+particle_flag_disable_z = true
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 1.0
+emission_ring_radius = 90.0
+emission_ring_inner_radius = 80.0
+angle_min = -137.4
+angle_max = 274.7
+spread = 180.0
+flatness = 1.0
+radial_velocity_min = 50.0
+radial_velocity_max = 120.0
+damping_min = 80.0
+damping_max = 90.0
+damping_curve = SubResource("CurveTexture_lu6j7")
+scale_min = 0.8
+scale_max = 1.2
+alpha_curve = SubResource("CurveTexture_1jegp")
+
 [node name="Base" type="Node2D" groups=["base"]]
 script = ExtResource("1_5f5so")
 
@@ -62,3 +103,12 @@ shape = SubResource("CircleShape2D_wpkfj")
 material = SubResource("ShaderMaterial_l8pkm")
 position = Vector2(0, -91)
 _attackable = NodePath("../Attackable")
+
+[node name="AttackedParticles2D" type="GPUParticles2D" parent="."]
+material = SubResource("ShaderMaterial_yuqw7")
+emitting = false
+amount = 32
+process_material = SubResource("ParticleProcessMaterial_p3v0p")
+texture = ExtResource("11_7mayq")
+one_shot = true
+explosiveness = 1.0
