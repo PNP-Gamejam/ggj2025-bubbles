@@ -25,6 +25,7 @@ func _ready() -> void:
 	)
 	_attackable.died.connect(func():
 		animated_sprite.play("death")
+		_attackable.monitorable = false
 		_death_audio.play()
 		_attacker.stop_attack()
 		GlobalBus.money_dropped.emit(bounty)
