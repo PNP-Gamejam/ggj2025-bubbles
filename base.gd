@@ -19,7 +19,6 @@ func _ready() -> void:
 		if _attackable.hp > 0:
 			_shake()
 			var new_frame = int(_attackable.max_hp / _attackable.hp)
-			print(_attackable.max_hp, " ", _attackable.hp, " ", new_frame, " ", animated_sprite.frame)
 			if new_frame != animated_sprite.frame:
 				attacked_particles.restart()
 				GlobalBus.health_threshold_reached.emit()

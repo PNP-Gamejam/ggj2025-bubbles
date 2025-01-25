@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dope7ywd57rhn"]
+[gd_scene load_steps=20 format=3 uid="uid://dope7ywd57rhn"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_ac088"]
 [ext_resource type="PackedScene" uid="uid://tbcd247fin7t" path="res://base.tscn" id="2_g7t2p"]
@@ -7,35 +7,39 @@
 [ext_resource type="PackedScene" uid="uid://bohl7r3rctjnj" path="res://damage_stacker.tscn" id="4_n3h7q"]
 [ext_resource type="Texture2D" uid="uid://8x2yqsh3qtf7" path="res://assets/Bg. jpg.jpg" id="6_x3iyv"]
 [ext_resource type="Script" path="res://placeholder.gd" id="7_ttnha"]
-[ext_resource type="PackedScene" uid="uid://b1u6oagm10ocf" path="res://spawner.tscn" id="8_dcswj"]
+[ext_resource type="PackedScene" uid="uid://b8vagr0yat428" path="res://spawner.tscn" id="8_dcswj"]
 [ext_resource type="PackedScene" uid="uid://5s5hxbkgbg0n" path="res://scenes/fat.tscn" id="9_nej4j"]
+[ext_resource type="Texture2D" uid="uid://df4as0u5dc6ul" path="res://assets/Sentry icon.png" id="9_oc6sb"]
+[ext_resource type="Texture2D" uid="uid://bkuemb27b2ymv" path="res://assets/Triple sentry icon.png" id="10_2ptfa"]
+[ext_resource type="Texture2D" uid="uid://c7lgucjscsi6x" path="res://assets/Hold sentry icon.png" id="10_hu8vp"]
 [ext_resource type="PackedScene" uid="uid://5ajshg4k8q4w" path="res://scenes/norman.tscn" id="10_xldua"]
 [ext_resource type="AudioStream" uid="uid://dtntwqr3bk8as" path="res://sound/Theme/No Se Ni Pa Donde Voy - Inaban.mp3" id="11_acn5o"]
+[ext_resource type="Texture2D" uid="uid://bifyu3hrlw36l" path="res://assets/Heavy sentry icon.png" id="11_dxlgf"]
 [ext_resource type="PackedScene" uid="uid://cqw313np7im3q" path="res://scenes/skinny.tscn" id="11_qwpp6"]
+[ext_resource type="Texture2D" uid="uid://03un3onnow4a" path="res://assets/Hold triple sentry icon.png" id="12_4h0xf"]
+[ext_resource type="Texture2D" uid="uid://sh7d00701dpv" path="res://assets/Hold heavy sentry icon.png" id="14_6igoi"]
 
-[sub_resource type="Gradient" id="Gradient_n5oek"]
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_ug6pl"]
-gradient = SubResource("Gradient_n5oek")
-
-[sub_resource type="Gradient" id="Gradient_0i0g3"]
-offsets = PackedFloat32Array(0)
-colors = PackedColorArray(1, 1, 1, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_34c6i"]
-gradient = SubResource("Gradient_0i0g3")
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_scyu8"]
+bg_color = Color(0.17, 0.17, 0.17, 0.576471)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_ac088")
-metadata/_edit_vertical_guides_ = [571.0, 1762.0]
+metadata/_edit_vertical_guides_ = [1762.0]
 
 [node name="Spawner" parent="." instance=ExtResource("8_dcswj")]
 position = Vector2(572, 298)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(609, 288)
-zoom = Vector2(0.5, 0.5)
+zoom = Vector2(0.6, 0.6)
 script = ExtResource("3_7oor4")
 
 [node name="Base" parent="." instance=ExtResource("2_g7t2p")]
@@ -101,16 +105,67 @@ alignment = 2
 
 [node name="SentryButton" type="TextureButton" parent="UI/UI/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(86, 86)
 layout_mode = 2
-texture_normal = SubResource("GradientTexture2D_ug6pl")
+action_mode = 0
+texture_normal = ExtResource("9_oc6sb")
+texture_hover = ExtResource("10_hu8vp")
+texture_disabled = ExtResource("10_hu8vp")
+ignore_texture_size = true
+stretch_mode = 5
 
-[node name="TextureRect2" type="TextureRect" parent="UI/UI/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-texture = SubResource("GradientTexture2D_34c6i")
+[node name="Panel" type="Panel" parent="UI/UI/VBoxContainer/HBoxContainer/SentryButton"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_scyu8")
 
-[node name="TextureRect3" type="TextureRect" parent="UI/UI/VBoxContainer/HBoxContainer"]
+[node name="TripleSentryButton" type="TextureButton" parent="UI/UI/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(86, 86)
 layout_mode = 2
-texture = SubResource("GradientTexture2D_34c6i")
+action_mode = 0
+texture_normal = ExtResource("10_2ptfa")
+texture_pressed = ExtResource("12_4h0xf")
+texture_hover = ExtResource("12_4h0xf")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Panel" type="Panel" parent="UI/UI/VBoxContainer/HBoxContainer/TripleSentryButton"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_scyu8")
+
+[node name="HeavySentryButton" type="TextureButton" parent="UI/UI/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(86, 86)
+layout_mode = 2
+action_mode = 0
+texture_normal = ExtResource("11_dxlgf")
+texture_pressed = ExtResource("14_6igoi")
+texture_hover = ExtResource("14_6igoi")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Panel" type="Panel" parent="UI/UI/VBoxContainer/HBoxContainer/HeavySentryButton"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_scyu8")
 
 [node name="GameOverPanel" type="Panel" parent="UI"]
 unique_name_in_owner = true
@@ -172,7 +227,12 @@ position = Vector2(1111, 239)
 [node name="Skinny" parent="." instance=ExtResource("11_qwpp6")]
 position = Vector2(58, 212)
 
+[node name="Monster" parent="Skinny" index="0"]
+hp = 1500
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_acn5o")
 volume_db = -10.0
 autoplay = true
+
+[editable path="Skinny"]

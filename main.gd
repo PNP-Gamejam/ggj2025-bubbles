@@ -4,7 +4,7 @@ const SENTRY_COST := 50
 const SENTRY_SPRITE = preload("res://assets/Sentries-AT1.png")
 const SENTRY = preload("res://sentry.tscn")
 
-var money := 100
+var money := 5500
 
 @onready var base: Base = $Base 
 @onready var placeholder: Sprite2D = %Placeholder
@@ -31,14 +31,21 @@ func _ready() -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("select_sentry_1"):
 		_select_sentry_1()
-	if event.is_action_pressed("place_sentry"):
-		on_click.call()
-		on_click = func(): pass
-		placeholder.texture = null
+	if event is InputEventMouseButton:
+		if !event.pressed: return
+		if !Constants.has_sentry_nearby(get_global_mouse_position()):
+			on_click.call()
+			on_click = func(): pass
+			placeholder.texture = null
 
 
 func _process(delta: float) -> void:
+	var sentries = get_tree().get_nodes_in_group("sentry")
 	money_label.text = "Money: %d" % money
+	if !Constants.has_sentry_nearby(get_global_mouse_position()):
+		placeholder.self_modulate = Color.WHITE
+	else:
+		placeholder.self_modulate = Color.RED
 
 	
 func buy_and_place_sentry():

@@ -18,12 +18,14 @@ config/icon="res://icon.svg"
 [autoload]
 
 GlobalBus="*res://scripts/global_bus.gd"
+Constants="*res://scripts/constants.gd"
 
 [global_group]
 
 base=""
 attackable=""
 damage_clicker=""
+sentry=""
 
 [input]
 
