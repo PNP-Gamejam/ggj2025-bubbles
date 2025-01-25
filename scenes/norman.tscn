@@ -52,7 +52,7 @@ animations = [{
 [node name="Norman" type="Node2D"]
 
 [node name="Monster" parent="." instance=ExtResource("1_f42rp")]
-attack_damage = 10
+attack_damage = 6
 hp = 100
 SPEED = 40.0
 bounty = 5

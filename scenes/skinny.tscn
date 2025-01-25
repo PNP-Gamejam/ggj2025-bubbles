@@ -56,7 +56,7 @@ attack_damage = 2
 attack_cooldown = 0.75
 hp = 30
 SPEED = 60.0
-bounty = 8
+bounty = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Monster"]
 position = Vector2(-7, 34)

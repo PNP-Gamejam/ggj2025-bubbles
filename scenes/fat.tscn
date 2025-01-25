@@ -52,11 +52,11 @@ animations = [{
 [node name="Fat" type="Node2D"]
 
 [node name="Monster" parent="." instance=ExtResource("1_k6d8l")]
-attack_damage = 15
+attack_damage = 10
 attack_cooldown = 2.5
 hp = 150
 SPEED = 30.0
-bounty = 15
+bounty = 10
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Monster"]
 scale = Vector2(0.5, 0.5)
