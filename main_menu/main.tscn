@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://biyyejk3jgomd"]
+[gd_scene load_steps=16 format=3 uid="uid://biyyejk3jgomd"]
 
 [ext_resource type="Script" path="res://main_menu/src/menu_controller.gd" id="1_7x6vp"]
 [ext_resource type="Texture2D" uid="uid://ddkatg0ayyh4k" path="res://assets/Menu background .jpg" id="2_tlo6r"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://cugsbla87xyx2" path="res://Setting blue.png" id="9_fosk2"]
 [ext_resource type="Texture2D" uid="uid://8xod7ewa3l6t" path="res://Exit blue.png" id="11_40rtj"]
 [ext_resource type="AudioStream" uid="uid://jfj5eg3l48qk" path="res://sound/Theme/On My Own - Bail Bonds.mp3" id="11_ci1ca"]
+[ext_resource type="PackedScene" uid="uid://dvrufv18npu5j" path="res://install_sounds.tscn" id="12_rxwli"]
 
 [node name="main" type="Node"]
 
@@ -53,24 +54,24 @@ expand_mode = 1
 
 [node name="3GunBg" type="TextureRect" parent="CanvasLayer/MainMenu/Bg/Bg"]
 layout_mode = 1
-anchors_preset = -1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
 anchor_right = 1.0
-anchor_bottom = 0.994
-offset_left = -1.0
-offset_top = 1.0
-offset_right = -1.0
-offset_bottom = 4.888
+anchor_bottom = 0.5
+offset_left = -1152.0
+offset_top = -324.0
+offset_bottom = 324.0
+grow_horizontal = 0
+grow_vertical = 2
 texture = ExtResource("3_5oktd")
 
 [node name="GameTitle" type="TextureRect" parent="CanvasLayer/MainMenu/Bg/Bg/3GunBg"]
 layout_mode = 1
-anchors_preset = -1
-anchor_right = 0.549
-anchor_bottom = 0.42
-offset_left = 3.0
-offset_top = 10.0
-offset_right = 0.552002
-offset_bottom = -0.160004
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 646.0
+offset_bottom = 278.0
 texture = ExtResource("5_qjw8t")
 
 [node name="MainContainer" type="VBoxContainer" parent="CanvasLayer/MainMenu"]
@@ -104,6 +105,9 @@ layout_mode = 2
 size_flags_vertical = 4
 texture_normal = ExtResource("8_gaktb")
 texture_hover = ExtResource("11_40rtj")
+
+[node name="InstallSounds" parent="CanvasLayer/MainMenu/MainContainer" instance=ExtResource("12_rxwli")]
+root_path = NodePath("..")
 
 [node name="OptionContainer" type="VBoxContainer" parent="CanvasLayer/MainMenu"]
 unique_name_in_owner = true
