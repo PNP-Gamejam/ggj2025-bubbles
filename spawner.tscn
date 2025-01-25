@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://b8vagr0yat428"]
+[gd_scene load_steps=6 format=3 uid="uid://b1u6oagm10ocf"]
 
 [ext_resource type="Script" path="res://spawner.gd" id="1_e51f7"]
 [ext_resource type="PackedScene" uid="uid://5ajshg4k8q4w" path="res://scenes/norman.tscn" id="2_bt7fn"]
