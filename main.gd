@@ -11,7 +11,7 @@ var money := 50
 
 @onready var sentry_button: TextureButton = %SentryButton
 @onready var money_label: Label = %MoneyLabel
-@onready var game_over_panel: Panel = %GameOverPanel
+@onready var game_over_panel: Control = %GameOverPanel
 @onready var retry_button: Button = %RetryButton
 @onready var main_menu_button: Button = %MainMenuButton
 
