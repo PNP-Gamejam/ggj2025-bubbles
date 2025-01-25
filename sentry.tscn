@@ -66,8 +66,6 @@ radius = 309.672
 [node name="Sentry" type="Node2D"]
 script = ExtResource("1_xb7h0")
 BULLET = ExtResource("2_iakcu")
-attack_damage = 5
-attack_cooldown = 3.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(35, 0)

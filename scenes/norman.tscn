@@ -52,7 +52,10 @@ animations = [{
 [node name="Norman" type="Node2D"]
 
 [node name="Monster" parent="." instance=ExtResource("1_f42rp")]
-SPEED = 30.0
+attack_damage = 10
+hp = 100
+SPEED = 40.0
+bounty = 5
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Monster"]
 position = Vector2(-14, 31)

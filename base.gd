@@ -9,6 +9,7 @@ signal died
 
 func _ready() -> void:
 	_attackable.max_hp = hp
+	_attackable.hp = hp
 	_attackable.died.connect(func():
 		died.emit()
 	)

@@ -28,12 +28,16 @@ gradient = SubResource("Gradient_0i0g3")
 script = ExtResource("1_ac088")
 metadata/_edit_vertical_guides_ = [571.0, 1762.0]
 
+[node name="Spawner" parent="." instance=ExtResource("8_dcswj")]
+position = Vector2(572, 298)
+
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(609, 288)
 zoom = Vector2(0.5, 0.5)
 
 [node name="Base" parent="." instance=ExtResource("2_g7t2p")]
 position = Vector2(573, 298)
+hp = 100
 
 [node name="DamageClicker" type="Node" parent="." groups=["damage_clicker"]]
 script = ExtResource("3_1wouj")
@@ -156,23 +160,11 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "Main Menu"
 
-[node name="Spawner" parent="." instance=ExtResource("8_dcswj")]
-position = Vector2(572, 298)
-
 [node name="Fat" parent="." instance=ExtResource("9_nej4j")]
 position = Vector2(443, -72)
-
-[node name="Fat2" parent="." instance=ExtResource("9_nej4j")]
-position = Vector2(566, -72)
 
 [node name="Norman" parent="." instance=ExtResource("10_xldua")]
 position = Vector2(1111, 239)
 
-[node name="Norman2" parent="." instance=ExtResource("10_xldua")]
-position = Vector2(1119, 334)
-
 [node name="Skinny" parent="." instance=ExtResource("11_qwpp6")]
 position = Vector2(58, 212)
-
-[node name="Skinny2" parent="." instance=ExtResource("11_qwpp6")]
-position = Vector2(52, 315)

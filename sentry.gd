@@ -1,8 +1,9 @@
 extends Node2D
 
 @export var BULLET: PackedScene 
-@export var attack_damage := 1
-@export var attack_cooldown := 1.0
+@export var hp := 70
+@export var attack_damage := 15
+@export var attack_cooldown := 0.5
 
 @onready var _attackable: Attackable = $Attackable
 @onready var _attacker: Attacker = $Attacker
@@ -11,6 +12,11 @@ extends Node2D
 
 
 func _ready() -> void:
+	_attackable.max_hp = hp
+	_attackable.hp = hp
+	_attackable.died.connect(func():
+		queue_free()
+	)
 	_attacker.attack_damage = attack_damage
 	_attacker.attack_cooldown = attack_cooldown
 	_attacker.attack_started.connect(_on_attack_started)

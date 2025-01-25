@@ -52,6 +52,11 @@ animations = [{
 [node name="Skinny" type="Node2D"]
 
 [node name="Monster" parent="." instance=ExtResource("1_m10dp")]
+attack_damage = 2
+attack_cooldown = 0.75
+hp = 30
+SPEED = 60.0
+bounty = 8
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Monster"]
 position = Vector2(-7, 34)
