@@ -25,7 +25,8 @@ func _ready() -> void:
 	)
 	_attackable.died.connect(func():
 		animated_sprite.play("death")
-		_attackable.monitorable = false
+		_attackable.set_deferred("input_pickable", false)
+		_attackable.set_deferred("monitorable", false)
 		_death_audio.play()
 		_attacker.stop_attack()
 		GlobalBus.money_dropped.emit(bounty)
@@ -33,7 +34,7 @@ func _ready() -> void:
 		queue_free()
 	)
 	if _attackable.input_pickable:
-		_attackable.input_event.connect(_on_input_event)
+		_attackable.input_event.connect(_on_attackable_input_event)
 	GlobalBus.game_over.connect(func():
 		animated_sprite.play("default")
 		set_process(false)
@@ -41,7 +42,7 @@ func _ready() -> void:
 	_boid.owner = owner
 	animated_sprite.material = preload("res://resources/tint_material.tres").duplicate()
 
-func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int):
+func _on_attackable_input_event(viewport: Node, event: InputEvent, shape_idx: int):
 	if event is InputEventMouseButton:
 		if Input.is_action_just_pressed('click_attack'):
 			var damage_clicker = get_tree().get_first_node_in_group("damage_clicker") as DamageClicker
