@@ -47,7 +47,6 @@ stream_2/stream = ExtResource("12_ctyos")
 [node name="Monster" type="Node2D"]
 script = ExtResource("1_t7yji")
 SPEED = 10.0
-metadata/_edit_vertical_guides_ = [1155.0]
 
 [node name="Attackable" parent="." instance=ExtResource("3_evpw1")]
 collision_layer = 2

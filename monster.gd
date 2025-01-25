@@ -13,7 +13,6 @@ extends Node2D
 @onready var _death_audio: AudioStreamPlayer = $DeathAudioStreamPlayer
 @onready var _hurt_audio: AudioStreamPlayer = $HurtAudioStreamPlayer
 
-
 func _ready() -> void:
 	_attacker.attack_cooldown = attack_cooldown
 	_attacker.attack_damage = attack_damage
@@ -21,6 +20,7 @@ func _ready() -> void:
 	_attackable.hp = hp
 	_attackable.hp_changed.connect(func():
 		if _attackable.hp > 0:
+			_play_tint_animation()
 			_hurt_audio.play()
 	)
 	_attackable.died.connect(func():
@@ -38,6 +38,7 @@ func _ready() -> void:
 		set_process(false)
 	)
 	_boid.owner = owner
+	animated_sprite.material = preload("res://resources/tint_material.tres").duplicate()
 
 func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int):
 	if event is InputEventMouseButton:
@@ -45,7 +46,7 @@ func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int):
 			var damage_clicker = get_tree().get_first_node_in_group("damage_clicker") as DamageClicker
 			damage_clicker.on_click(_attackable)
 	
-	
+
 func _process(delta: float) -> void:
 	if _attackable.hp <= 0:
 		return
@@ -59,3 +60,12 @@ func _process(delta: float) -> void:
 	else:
 		animated_sprite.play("attack")
 	
+func _play_tint_animation():
+	var mat = animated_sprite.material as ShaderMaterial
+	var tween = get_tree().create_tween()
+	tween.tween_method(func(t): 
+		mat.set_shader_parameter("amount", .6 * abs(sin(t))),
+		0.0, TAU, .7
+	)
+	tween.tween_callback(func(): mat.set_shader_parameter("amount", 0))
+	tween.play()

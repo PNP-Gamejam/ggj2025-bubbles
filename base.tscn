@@ -50,6 +50,7 @@ shader_parameter/max_hp = 10.0
 script = ExtResource("1_5f5so")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 1
 sprite_frames = SubResource("SpriteFrames_dm0kp")
 
 [node name="Attackable" parent="." instance=ExtResource("3_aiyoj")]
