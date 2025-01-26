@@ -1,5 +1,7 @@
 extends Node2D
 
+const COIN = preload("res://coin.tscn")
+
 @export var attack_damage := 1
 @export var attack_cooldown := 1.0
 @export var hp := 55
@@ -29,7 +31,7 @@ func _ready() -> void:
 		_attackable.set_deferred("monitorable", false)
 		_death_audio.play()
 		_attacker.stop_attack()
-		GlobalBus.money_dropped.emit(bounty)
+		drop_coin()
 		await get_tree().create_timer(3.0).timeout
 		owner.queue_free()
 	)
@@ -54,6 +56,7 @@ func _process(delta: float) -> void:
 	else:
 		animated_sprite.play("attack")
 	
+	
 func _play_tint_animation():
 	var mat = animated_sprite.material as ShaderMaterial
 	var tween = get_tree().create_tween()
@@ -63,3 +66,9 @@ func _play_tint_animation():
 	)
 	tween.tween_callback(func(): mat.set_shader_parameter("amount", 0))
 	tween.play()
+	
+func drop_coin():
+	var coin = COIN.instantiate()
+	coin.amount = bounty
+	coin.global_position = owner.global_position
+	get_tree().current_scene.add_child(coin)

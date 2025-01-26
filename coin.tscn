@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://daya1d71bu8iy"]
+
+[ext_resource type="Script" path="res://coin.gd" id="1_vgu3a"]
+[ext_resource type="Texture2D" uid="uid://0gf3cjdcyg6a" path="res://assets/Bubbles coins.png" id="2_r5rn8"]
+[ext_resource type="AudioStream" uid="uid://cp7qn73l14ljd" path="res://sound/CoinPick/S1.wav" id="3_2ten7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ndl5d"]
+radius = 20.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_dl6s4"]
+random_pitch = 1.2
+random_volume_offset_db = 1.0
+streams_count = 1
+stream_0/stream = ExtResource("3_2ten7")
+
+[node name="Coin" type="Area2D"]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("1_vgu3a")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_r5rn8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ndl5d")
+
+[node name="PickAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_dl6s4")
+pitch_scale = 1.2
