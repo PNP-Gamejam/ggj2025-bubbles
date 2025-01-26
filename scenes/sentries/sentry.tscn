@@ -106,7 +106,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gisq2"]
-radius = 45.3982
+radius = 29.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_iut1b"]
 radius = 309.672
@@ -139,17 +139,18 @@ one_shot = true
 explosiveness = 1.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(35, 0)
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_4jtvp")
 animation = &"attack"
 autoplay = "default"
 frame = 6
+offset = Vector2(66.6667, 0)
 
 [node name="Attackable" parent="." instance=ExtResource("13_bvp2p")]
 input_pickable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Attackable"]
+position = Vector2(-2, 0)
 shape = SubResource("CircleShape2D_gisq2")
 
 [node name="Attacker" parent="." instance=ExtResource("3_5gn1u")]

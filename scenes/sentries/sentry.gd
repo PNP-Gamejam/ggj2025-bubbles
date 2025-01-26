@@ -29,6 +29,10 @@ func _ready() -> void:
 	_attacker.attack_started.connect(_on_attack_started)
 	for c in get_children():
 		if c is Shooter: c.bullet_damage = attack_damage
+	var base_position = (get_tree().get_first_node_in_group("base") as Node2D).global_position
+	look_at(base_position)
+	rotate(PI)
+	
 	
 func _on_attack_started(_target: Attackable, _damage: float):
 	_animated_sprite.play("attack")

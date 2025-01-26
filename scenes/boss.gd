@@ -17,7 +17,7 @@ const SPEED = 70.0
 @onready var _attack_audio: AudioStreamPlayer = $AttackAudioStreamPlayer
 
 const MISSILE = preload("res://scenes/projectiles/missile.tscn")
-const DISTANCE_BEFORE_SHOOT = 700.0
+const DISTANCE_BEFORE_SHOOT = 650.0
 
 enum State { WALK, SHOOT, FALLBACK }
 var state: State = State.WALK
@@ -42,7 +42,7 @@ func _ready() -> void:
 		set_process(false)
 	)
 	animated_sprite.frame_changed.connect(func():
-		if animated_sprite.animation == "walk":
+		if animated_sprite.animation == "walk" and animated_sprite.frame == 0:
 			_walk_audio.play()
 	)
 	
@@ -52,8 +52,8 @@ func _ready() -> void:
 	
 	
 func _spawn_missiles():
-	for i in range(4):
-		await get_tree().create_timer(1.0).timeout
+	for i in range(3):
+		await get_tree().create_timer(1.5).timeout
 		var missile = MISSILE.instantiate()
 		missile.global_position = base_position +\
 			Vector2.RIGHT.rotated(randf() * TAU) * Constants.SPAWN_RADIUS
@@ -64,7 +64,7 @@ func _spawn_missiles():
 func _start_shoot():
 	state = State.SHOOT
 	animated_sprite.play("attack")
-	for i in range(2):
+	for i in range(1):
 		await get_tree().create_timer(2.0).timeout
 		var missile = MISSILE.instantiate()
 		missile.global_position = _missile_spawn_position.global_position
@@ -91,14 +91,16 @@ func _start_walk():
 func _process(delta: float) -> void:
 	if _attackable.hp <= 0:
 		return
-	look_at(base_position)
-	rotate(-PI/2)
 	if state == State.WALK:
+		look_at(base_position)
+		rotate(-PI/2)
 		global_position -= base_position.direction_to(global_position) * SPEED * delta
 		if base_position.distance_to(global_position) <= DISTANCE_BEFORE_SHOOT:
 			_start_shoot() 
 	elif state == State.FALLBACK:
-		global_position += base_position.direction_to(global_position) * SPEED / 2.0 * delta
+		look_at(base_position)
+		rotate(1.25*TAU)
+		global_position += base_position.direction_to(global_position) * SPEED / 1.2 * delta
 		
 	
 		

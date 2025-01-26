@@ -102,7 +102,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gisq2"]
-radius = 45.3982
+radius = 22.8035
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_iut1b"]
 radius = 309.672
@@ -139,7 +139,7 @@ explosiveness = 1.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 rotation = -1.5708
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.4, 0.4)
 sprite_frames = SubResource("SpriteFrames_3alnn")
 animation = &"attack"
 autoplay = "default"
@@ -161,18 +161,18 @@ is_custom_attack = true
 shape = SubResource("CircleShape2D_iut1b")
 
 [node name="Shooter1" type="Node2D" parent="." groups=["shooter"]]
-position = Vector2(70, -36)
+position = Vector2(44, -23)
 rotation = -0.314159
 script = ExtResource("14_in375")
 BULLET = ExtResource("15_8t4x1")
 
 [node name="Shooter2" type="Node2D" parent="." groups=["shooter"]]
-position = Vector2(85, 0)
+position = Vector2(50, 0)
 script = ExtResource("14_in375")
 BULLET = ExtResource("15_8t4x1")
 
 [node name="Shooter3" type="Node2D" parent="." groups=["shooter"]]
-position = Vector2(72, 37)
+position = Vector2(42, 22)
 rotation = 0.314159
 script = ExtResource("14_in375")
 BULLET = ExtResource("15_8t4x1")

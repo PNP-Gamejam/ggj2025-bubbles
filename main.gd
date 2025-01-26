@@ -75,7 +75,7 @@ func _select_sentry(sentry_type: String):
 	var SCENE = get("%s" % sentry_type)
 	if money >= cost:
 		placeholder.texture = sprite
-		placeholder.scale = Vector2.ONE * 0.4
+		placeholder.scale = Vector2.ONE * 0.2
 		placeholder.offset = offset
 		on_click = func():
 			money -= cost
