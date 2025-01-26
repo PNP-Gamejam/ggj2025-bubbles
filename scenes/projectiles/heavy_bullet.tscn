@@ -70,3 +70,7 @@ process_material = SubResource("ParticleProcessMaterial_73agq")
 texture = ExtResource("2_yedcj")
 one_shot = true
 explosiveness = 1.0
+
+[node name="DestroyTimer" type="Timer" parent="."]
+wait_time = 8.0
+autostart = true

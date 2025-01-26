@@ -71,4 +71,4 @@ func drop_coin():
 	var coin = COIN.instantiate()
 	coin.amount = bounty
 	coin.global_position = owner.global_position
-	get_tree().current_scene.add_child(coin)
+	get_tree().current_scene.call_deferred("add_child", coin)

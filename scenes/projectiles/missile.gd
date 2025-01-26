@@ -11,13 +11,14 @@ var is_destroying = false
 @onready var impact_audio: AudioStreamPlayer = $ImpactAudioStreamPlayer
 @onready var trail_particles_2d: GPUParticles2D = $TrailParticles2D
 @onready var attackable: Attackable = $Attackable
+@onready var destroy_timer: Timer = $DestroyTimer
 
 func _ready() -> void:
 	attackable.max_hp = hp
 	attackable.hp = hp
 	area_entered.connect(_on_area_entered)
 	attackable.died.connect(_destroy_self)
-	await get_tree().create_timer(1.0).timeout
+	destroy_timer.timeout.connect(queue_free)
 	trail_particles_2d.emitting = true
 
 

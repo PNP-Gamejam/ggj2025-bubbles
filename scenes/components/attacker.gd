@@ -65,5 +65,6 @@ func find_new_target():
 			start_attack(a)
 			return
 
+
 func stop_attack():
 	_current_target = null

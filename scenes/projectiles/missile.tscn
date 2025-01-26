@@ -112,3 +112,7 @@ texture = SubResource("GradientTexture2D_27cku")
 [node name="ImpactAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_46djq")
 volume_db = -12.0
+
+[node name="DestroyTimer" type="Timer" parent="."]
+wait_time = 8.0
+autostart = true
