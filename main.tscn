@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bohl7r3rctjnj" path="res://damage_stacker.tscn" id="4_n3h7q"]
 [ext_resource type="Texture2D" uid="uid://8x2yqsh3qtf7" path="res://assets/Bg. jpg.jpg" id="6_x3iyv"]
 [ext_resource type="Script" path="res://placeholder.gd" id="7_ttnha"]
-[ext_resource type="PackedScene" uid="uid://b8vagr0yat428" path="res://spawner.tscn" id="8_dcswj"]
+[ext_resource type="PackedScene" uid="uid://b1u6oagm10ocf" path="res://spawner.tscn" id="8_dcswj"]
 [ext_resource type="Texture2D" uid="uid://df4as0u5dc6ul" path="res://assets/Sentry icon.png" id="9_oc6sb"]
 [ext_resource type="Texture2D" uid="uid://bkuemb27b2ymv" path="res://assets/Triple sentry icon.png" id="10_2ptfa"]
 [ext_resource type="Texture2D" uid="uid://c7lgucjscsi6x" path="res://assets/Hold sentry icon.png" id="10_hu8vp"]
@@ -285,7 +285,7 @@ volume_db = -10.0
 autoplay = true
 
 [node name="Skinny" parent="." instance=ExtResource("11_qwpp6")]
-position = Vector2(1017, 314)
+position = Vector2(1095, 314)
 
 [node name="Label" type="Label" parent="Skinny"]
 offset_left = -51.0
