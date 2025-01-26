@@ -15,7 +15,7 @@ const HEAVY_SENTRY_SPRITE = preload("res://assets/Heavy sentry 1.png")
 const HEAVY_SENTRY = preload("res://scenes/sentries/heavy_sentry.tscn")
 const HEAVY_SENTRY_OFFSET = Vector2(30, 0)
 
-var money := 99999
+var money := 50
 
 @onready var base: Base = $Base 
 @onready var placeholder: Sprite2D = %Placeholder
