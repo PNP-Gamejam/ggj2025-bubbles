@@ -38,10 +38,9 @@ func _attack_current_target():
 	
 	
 func _on_area_entered(area: Area2D):
-	if area is Attackable:
-		_current_target = area
-		_attack_timer.start()
-		area.died.connect(stop_attack)
+	if _current_target != null: return
+	if area is Attackable and area.hp > 0:
+		start_attack(area)
 
 
 func _on_area_exited(area: Area2D):
@@ -50,8 +49,21 @@ func _on_area_exited(area: Area2D):
 	if area == _current_target:
 		_current_target = null
 		_attack_timer.stop()
-		area.died.disconnect(stop_attack)
+		area.died.disconnect(find_new_target)
 
+
+func start_attack(attackable: Attackable):
+	_current_target = attackable
+	_attack_timer.start()
+	attackable.died.connect(find_new_target)
+
+
+func find_new_target():
+	stop_attack()
+	for a in get_overlapping_areas():
+		if a is Attackable and a.hp > 0:
+			start_attack(a)
+			return
 
 func stop_attack():
 	_current_target = null
