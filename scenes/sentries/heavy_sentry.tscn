@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://4s5l8issnoat" path="res://scenes/components/attackable.tscn" id="11_b0m8x"]
 [ext_resource type="PackedScene" uid="uid://4u16gdplxy4l" path="res://scenes/components/attacker.tscn" id="12_4yj1q"]
 [ext_resource type="Script" path="res://scenes/sentries/shooter.gd" id="13_j0uuc"]
-[ext_resource type="PackedScene" path="res://scenes/projectiles/heavy_bullet.tscn" id="14_v6l04"]
+[ext_resource type="PackedScene" uid="uid://bj70cweishj4p" path="res://scenes/projectiles/heavy_bullet.tscn" id="14_v6l04"]
 [ext_resource type="AudioStream" uid="uid://cu33yi2b7wdj7" path="res://sound/Turret Fire/S1.wav" id="15_c10fy"]
 [ext_resource type="AudioStream" uid="uid://tpv2cla558l1" path="res://sound/Turret Fire/S2.wav" id="16_w3u16"]
 [ext_resource type="AudioStream" uid="uid://duqujnengo4jm" path="res://sound/Turret Fire/S3.wav" id="17_o0svu"]
