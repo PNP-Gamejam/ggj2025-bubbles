@@ -125,7 +125,7 @@ stream_0/stream = ExtResource("21_tpvsl")
 [node name="TripleSentry" type="Node2D" groups=["sentry"]]
 script = ExtResource("1_eouox")
 hp = 50
-attack_damage = 10
+attack_damage = 8
 attack_cooldown = 0.7
 
 [node name="SpawnParticles2D" type="GPUParticles2D" parent="."]
