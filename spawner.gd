@@ -7,6 +7,7 @@ const BOSS = preload("res://scenes/boss.tscn")
 @onready var boss_timer: Timer = $BossTimer
 
 var monster_cooldown_time := 2.0
+var boss_count := 1
 
 func _ready() -> void:
 	monster_timer.timeout.connect(_spawn_random)
@@ -14,11 +15,12 @@ func _ready() -> void:
 	
 	
 func _spawn_boss() -> void:
-	monster_timer.wait_time = monster_cooldown_time * 2.0
-	var boss = BOSS.instantiate()
-	boss.global_position = Vector2(9999,9999)
-	get_tree().current_scene.add_child(boss)
-	
+	for i in range(boss_count):
+		monster_timer.wait_time = monster_cooldown_time * 2.0
+		var boss = BOSS.instantiate()
+		boss.global_position = Vector2(9999,9999)
+		get_tree().current_scene.add_child(boss)
+	boss_count += 1
 	
 func _spawn_random() -> void:
 	var scene = monster_scenes.pick_random()
