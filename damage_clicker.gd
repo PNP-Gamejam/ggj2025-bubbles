@@ -1,7 +1,7 @@
 class_name DamageClicker
 extends Node
 
-@export var base_damage := 10
+@export var base_damage := 15
 @export var DAMAGE_STACKER: PackedScene
 
 func on_click(attackable: Attackable):

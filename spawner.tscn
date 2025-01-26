@@ -15,4 +15,3 @@ autostart = true
 
 [node name="BossTimer" type="Timer" parent="."]
 wait_time = 90.0
-autostart = true
