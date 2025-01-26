@@ -28,14 +28,21 @@ var money := 50
 @onready var game_over_panel: Control = %GameOverPanel
 @onready var retry_button: Button = %RetryButton
 @onready var main_menu_button: Button = %MainMenuButton
+@onready var accuracy_label: Label = $UI/UI/AccuracyLabel
 
-var on_click := func(): pass
+var hit_count = 1
+var click_count = 1
+var on_click := Constants.EMPTY_FUNC
 	
 func _ready() -> void:
 	GlobalBus.money_dropped.connect(func(amount:float): money += amount)
+	GlobalBus.target_clicked.connect(func(): 
+		hit_count += 1
+	)
 	sentry_button.pressed.connect(_select_sentry.bind("SENTRY"))
 	triple_sentry_button.pressed.connect(_select_sentry.bind("TRIPLE_SENTRY"))
 	heavy_sentry_button.pressed.connect(_select_sentry.bind("HEAVY_SENTRY"))
+	
 	
 	base.died.connect(func(): 
 		GlobalBus.game_over.emit()
@@ -54,13 +61,16 @@ func _unhandled_input(event: InputEvent) -> void:
 		_select_sentry("HEAVY_SENTRY")
 	if event is InputEventMouseButton:
 		if !event.pressed: return
+		if on_click == Constants.EMPTY_FUNC:
+			click_count += 1
 		if !Constants.has_sentry_nearby(get_global_mouse_position()):
 			on_click.call()
-			on_click = func(): pass
+			on_click = Constants.EMPTY_FUNC
 			placeholder.texture = null
 
 
 func _process(delta: float) -> void:
+	accuracy_label.text = "Accuracy: %.2f%%" % [float(hit_count)/float(click_count)*100] 
 	money_label.text = "Money: %d" % money
 	if !Constants.has_sentry_nearby(get_global_mouse_position()):
 		placeholder.self_modulate = Color.WHITE

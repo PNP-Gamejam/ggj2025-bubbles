@@ -19,6 +19,7 @@ func pick():
 	if picked: return
 	picked = true
 	GlobalBus.money_dropped.emit(amount)
+	GlobalBus.target_clicked.emit()
 	pick_audio.play()
 	var tween = create_tween()
 	tween.set_parallel(true)

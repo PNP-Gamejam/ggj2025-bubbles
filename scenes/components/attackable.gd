@@ -26,3 +26,4 @@ func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int):
 		if Input.is_action_just_pressed('click_attack'):
 			var damage_clicker = get_tree().get_first_node_in_group("damage_clicker") as DamageClicker
 			damage_clicker.on_click(self)
+			GlobalBus.target_clicked.emit()
