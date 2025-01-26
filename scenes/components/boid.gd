@@ -1,7 +1,7 @@
 class_name Boid
 extends Area2D
 
-var nearby_boids: Array[Boid] = []
+var nearby_boids: Array = []
 
 func _ready() -> void:
 	area_exited.connect(_on_area_exited)

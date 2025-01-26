@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://5s5hxbkgbg0n"]
 
-[ext_resource type="PackedScene" uid="uid://cw557oc4ju5no" path="res://monster.tscn" id="1_k6d8l"]
+[ext_resource type="PackedScene" uid="uid://cw557oc4ju5no" path="res://scenes/components/monster.tscn" id="1_k6d8l"]
 [ext_resource type="Texture2D" uid="uid://qy2a74pg3uro" path="res://assets/Fat action1.png" id="2_kfxtp"]
 [ext_resource type="Texture2D" uid="uid://dewdxk5u7k3dv" path="res://assets/Fat action2.png" id="3_mdri4"]
 [ext_resource type="Texture2D" uid="uid://crjrsfg7rci66" path="res://assets/Fat death .png" id="4_7b1xe"]

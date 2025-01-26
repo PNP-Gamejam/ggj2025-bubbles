@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scenes/projectiles/missile.gd" id="1_5a1p2"]
 [ext_resource type="Texture2D" uid="uid://r66bnude761m" path="res://assets/Boss ammo.png" id="2_sly7b"]
 [ext_resource type="AudioStream" uid="uid://dulwk5mi1lt3l" path="res://sound/MissleSound/S1.wav" id="4_qlh4h"]
-[ext_resource type="Script" path="res://attackable.gd" id="5_3dikc"]
+[ext_resource type="Script" path="res://scenes/components/attackable.gd" id="5_3dikc"]
 [ext_resource type="Texture2D" uid="uid://bqabivfat6g26" path="res://assets/Explosion/explosion00.png" id="5_kbmhv"]
 [ext_resource type="Texture2D" uid="uid://dx0jexxm6kvqa" path="res://assets/Explosion/explosion01.png" id="6_n4o2w"]
 [ext_resource type="Texture2D" uid="uid://b4x0fp8irmo6l" path="res://assets/Explosion/explosion02.png" id="7_6a4gd"]

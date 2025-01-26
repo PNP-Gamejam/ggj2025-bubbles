@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://cqw313np7im3q"]
 
-[ext_resource type="PackedScene" uid="uid://cw557oc4ju5no" path="res://monster.tscn" id="1_m10dp"]
+[ext_resource type="PackedScene" uid="uid://cw557oc4ju5no" path="res://scenes/components/monster.tscn" id="1_m10dp"]
 [ext_resource type="Texture2D" uid="uid://b03xjssoduj5j" path="res://assets/Skinny action 1.png" id="2_gye5w"]
 [ext_resource type="Texture2D" uid="uid://l3u0t62x3lyj" path="res://assets/Skinny action 2.png" id="3_s4rwk"]
 [ext_resource type="Texture2D" uid="uid://c4bafeqxdpq70" path="res://assets/Skinny death.png" id="4_xn0ig"]

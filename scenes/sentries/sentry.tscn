@@ -1,10 +1,11 @@
-[gd_scene load_steps=34 format=3 uid="uid://bmbew5t3hprmb"]
+[gd_scene load_steps=35 format=3 uid="uid://bmbew5t3hprmb"]
 
 [ext_resource type="Texture2D" uid="uid://dy21ngd1utx30" path="res://assets/Sentries-AT1.png" id="1_q4qon"]
-[ext_resource type="Script" path="res://sentry.gd" id="1_xb7h0"]
+[ext_resource type="Script" path="res://scenes/sentries/sentry.gd" id="1_xb7h0"]
+[ext_resource type="Script" path="res://scenes/sentries/shooter.gd" id="2_gkemb"]
 [ext_resource type="PackedScene" uid="uid://wwahsq8w5r0b" path="res://scenes/projectiles/bullet.tscn" id="2_iakcu"]
 [ext_resource type="Shader" path="res://resources/circle_with_vertex.gdshader" id="3_4vq7v"]
-[ext_resource type="PackedScene" uid="uid://4u16gdplxy4l" path="res://attacker.tscn" id="3_5gn1u"]
+[ext_resource type="PackedScene" uid="uid://4u16gdplxy4l" path="res://scenes/components/attacker.tscn" id="3_5gn1u"]
 [ext_resource type="Texture2D" uid="uid://cgfd8iquynijn" path="res://assets/Sentries-AT2.png" id="3_mdu5p"]
 [ext_resource type="Texture2D" uid="uid://wdfjbgn7lodm" path="res://assets/Sentries-AT3.png" id="4_t5tvt"]
 [ext_resource type="Texture2D" uid="uid://dc67m7fl7tl4e" path="res://assets/Sentries-AT4.png" id="5_iq5yb"]
@@ -13,7 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://ca2qgctno3mxb" path="res://assets/Sentries-AT7.png" id="8_j7nfu"]
 [ext_resource type="Texture2D" uid="uid://cneuwj12nyhof" path="res://assets/Sentries-AT8.png" id="9_4hjmg"]
 [ext_resource type="Texture2D" uid="uid://bkfe6fbv8llnk" path="res://assets/Sentries-AT9.png" id="10_vgjsm"]
-[ext_resource type="PackedScene" uid="uid://4s5l8issnoat" path="res://attackable.tscn" id="13_bvp2p"]
+[ext_resource type="PackedScene" uid="uid://4s5l8issnoat" path="res://scenes/components/attackable.tscn" id="13_bvp2p"]
 [ext_resource type="AudioStream" uid="uid://cu33yi2b7wdj7" path="res://sound/Turret Fire/S1.wav" id="14_u2lq7"]
 [ext_resource type="AudioStream" uid="uid://tpv2cla558l1" path="res://sound/Turret Fire/S2.wav" id="15_n07cx"]
 [ext_resource type="AudioStream" uid="uid://duqujnengo4jm" path="res://sound/Turret Fire/S3.wav" id="16_x1d2g"]
@@ -127,7 +128,6 @@ stream_0/stream = ExtResource("20_l6qcb")
 
 [node name="Sentry" type="Node2D" groups=["sentry"]]
 script = ExtResource("1_xb7h0")
-BULLET = ExtResource("2_iakcu")
 
 [node name="SpawnParticles2D" type="GPUParticles2D" parent="."]
 show_behind_parent = true
@@ -161,8 +161,10 @@ is_custom_attack = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Attacker"]
 shape = SubResource("CircleShape2D_iut1b")
 
-[node name="BulletSpawnPosition" type="Marker2D" parent="."]
-position = Vector2(104, 0)
+[node name="Shooter" type="Node2D" parent="." groups=["shooter"]]
+position = Vector2(103, 0)
+script = ExtResource("2_gkemb")
+BULLET = ExtResource("2_iakcu")
 
 [node name="ShootAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_0f0fd")

@@ -8,7 +8,7 @@
 [ext_resource type="Shader" path="res://resources/hp_bar.gdshader" id="3_yeoc1"]
 [ext_resource type="Texture2D" uid="uid://c4ictlycavsql" path="res://assets/Boss walk1.png" id="4_8xwa8"]
 [ext_resource type="Texture2D" uid="uid://bnky1yl5ppvhf" path="res://assets/Boss walk2.png" id="5_k3v0f"]
-[ext_resource type="PackedScene" uid="uid://4s5l8issnoat" path="res://attackable.tscn" id="6_8o0kh"]
+[ext_resource type="PackedScene" uid="uid://4s5l8issnoat" path="res://scenes/components/attackable.tscn" id="6_8o0kh"]
 [ext_resource type="AudioStream" uid="uid://cumcd3ltns2r0" path="res://sound/HumanDead/S1.wav" id="8_xjsc3"]
 [ext_resource type="AudioStream" uid="uid://6o6m8rs04dff" path="res://sound/HumanDead/S2.wav" id="9_o0jmq"]
 [ext_resource type="AudioStream" uid="uid://bstxdoq5gjicq" path="res://sound/HumanDead/S3.wav" id="10_48uph"]

@@ -1,0 +1,72 @@
+[gd_scene load_steps=13 format=3 uid="uid://bj70cweishj4p"]
+
+[ext_resource type="Script" path="res://scenes/projectiles/bullet.gd" id="1_2x43c"]
+[ext_resource type="Texture2D" uid="uid://dbpkprsefo0pe" path="res://assets/Bubbles ammo.png" id="2_yedcj"]
+[ext_resource type="AudioStream" uid="uid://dfperj5i1kkpu" path="res://sound/BubbleHitSomething/S1.wav" id="3_08o65"]
+[ext_resource type="Shader" path="res://bullet_particle.gdshader" id="4_q6sf4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0supl"]
+radius = 23.0868
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_46djq"]
+playback_mode = 1
+random_pitch = 3.0
+streams_count = 1
+stream_0/stream = ExtResource("3_08o65")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yuqw7"]
+shader = ExtResource("4_q6sf4")
+
+[sub_resource type="Curve" id="Curve_oayyp"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_1jegp"]
+curve = SubResource("Curve_oayyp")
+
+[sub_resource type="Curve" id="Curve_xrd6h"]
+max_value = 2.0
+_data = [Vector2(0, 2), 0.0, 0.0, 0, 0, Vector2(1, 0), -0.181878, 0.0, 0, 0]
+point_count = 2
+metadata/_snap_enabled = true
+
+[sub_resource type="CurveTexture" id="CurveTexture_lu6j7"]
+curve = SubResource("Curve_xrd6h")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_73agq"]
+particle_flag_disable_z = true
+angle_min = -137.4
+angle_max = 274.7
+spread = 180.0
+flatness = 1.0
+initial_velocity_min = 100.0
+initial_velocity_max = 150.0
+damping_min = 80.0
+damping_max = 90.0
+damping_curve = SubResource("CurveTexture_lu6j7")
+scale_min = 0.8
+alpha_curve = SubResource("CurveTexture_1jegp")
+
+[node name="Bullet" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_2x43c")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("2_yedcj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_0supl")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_46djq")
+volume_db = -6.0
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+material = SubResource("ShaderMaterial_yuqw7")
+emitting = false
+process_material = SubResource("ParticleProcessMaterial_73agq")
+texture = ExtResource("2_yedcj")
+one_shot = true
+explosiveness = 1.0

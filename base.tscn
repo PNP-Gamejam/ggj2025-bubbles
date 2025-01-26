@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://base.gd" id="1_5f5so"]
 [ext_resource type="Texture2D" uid="uid://d4nfc4x1j5jbf" path="res://assets/Main bubble hp 0.png" id="2_vokf3"]
-[ext_resource type="PackedScene" uid="uid://4s5l8issnoat" path="res://attackable.tscn" id="3_aiyoj"]
+[ext_resource type="PackedScene" uid="uid://4s5l8issnoat" path="res://scenes/components/attackable.tscn" id="3_aiyoj"]
 [ext_resource type="Texture2D" uid="uid://dcocuk5ghy6q7" path="res://assets/Main bubble hp 20.png" id="3_owex3"]
 [ext_resource type="Texture2D" uid="uid://dl07volibtx7y" path="res://assets/Main bubble hp 40.png" id="4_66e0k"]
 [ext_resource type="PackedScene" uid="uid://jw5bme151i83" path="res://hp_bar.tscn" id="4_vt07g"]

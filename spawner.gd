@@ -2,20 +2,18 @@ extends Node2D
 
 const BOSS = preload("res://scenes/boss.tscn")
 
-@export var monster_scenes: Array[PackedScene] = []
+@export var monster_scenes: Array = []
 @onready var monster_timer: Timer = $MonsterTimer
 @onready var boss_timer: Timer = $BossTimer
 
 var monster_cooldown_time := 2.0
 
 func _ready() -> void:
-	print("YEEYESY")
 	monster_timer.timeout.connect(_spawn_random)
 	boss_timer.timeout.connect(_spawn_boss)
 	
 	
 func _spawn_boss() -> void:
-	print("NICE")
 	monster_timer.wait_time = monster_cooldown_time * 2.0
 	var boss = BOSS.instantiate()
 	boss.global_position = Vector2(9999,9999)

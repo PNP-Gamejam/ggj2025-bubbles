@@ -126,6 +126,7 @@ mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_scyu8")
 
 [node name="TripleSentryButton" type="TextureButton" parent="UI/UI/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(86, 86)
 layout_mode = 2
 action_mode = 0
@@ -147,6 +148,7 @@ mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_scyu8")
 
 [node name="HeavySentryButton" type="TextureButton" parent="UI/UI/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(86, 86)
 layout_mode = 2
 action_mode = 0
@@ -226,12 +228,10 @@ autoplay = true
 [node name="Skinny" parent="." instance=ExtResource("11_qwpp6")]
 position = Vector2(1017, 314)
 
-[node name="Label" type="Label" parent="Skinny/Monster" index="7"]
-offset_left = 21.0
-offset_top = 38.0
-offset_right = 125.0
-offset_bottom = 72.0
+[node name="Label" type="Label" parent="Skinny"]
+offset_left = -51.0
+offset_top = -51.0
+offset_right = 53.0
+offset_bottom = -17.0
 theme_override_font_sizes/font_size = 24
 text = "Click me!"
-
-[editable path="Skinny"]

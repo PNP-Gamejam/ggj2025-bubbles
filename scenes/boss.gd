@@ -7,7 +7,6 @@ const SPEED = 70.0
 @onready var _attackable: Attackable = $Attackable
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
-@onready var _visible_notifier: VisibleOnScreenNotifier2D = $VisibleOnScreenNotifier2D
 @onready var _fall_back_timer: Timer = $FallBackTimer
 @onready var _missile_spawn_position: Marker2D = $MissileSpawnPosition
 @onready var backup_missile_timer: Timer = $BackupMissileTimer

@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://5ajshg4k8q4w"]
 
-[ext_resource type="PackedScene" uid="uid://cw557oc4ju5no" path="res://monster.tscn" id="1_f42rp"]
+[ext_resource type="PackedScene" uid="uid://cw557oc4ju5no" path="res://scenes/components/monster.tscn" id="1_f42rp"]
 [ext_resource type="Texture2D" uid="uid://b4ylp4q6o4uw" path="res://assets/Norman action1.png" id="2_paqs5"]
 [ext_resource type="Texture2D" uid="uid://dnlyvq0ygcfl8" path="res://assets/Norman action2.png" id="3_xnceh"]
 [ext_resource type="Texture2D" uid="uid://16m284ebwc8d" path="res://assets/Norman death.png" id="4_4c3wn"]
